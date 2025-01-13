@@ -1,0 +1,202 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|c:\\users\\niss\\desktop\\ema\\nocountry-57-webapp\\c23-57-webapp\\c23-57-webapp\\nc_grupo57\\capadominio\\materiaalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:capadominio\\materiaalumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\capaprofesores\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|solutionrelative:capaprofesores\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TipoNota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\TipoNota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\TutorAlumno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Materia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Materia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\MateriaProfesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\MateriaProfesor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Nota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Nota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Parentesco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Parentesco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Mensaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{932D28DC-FB5E-4FD3-BB5B-3499A011B849}|CapaDominio\\CapaDominio.csproj|solutionrelative:CapaDominio\\Mensaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TutorAlumno.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\TutorAlumno.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
+              "RelativeToolTip": "CapaDominio\\TutorAlumno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:22:58.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Usuario.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Usuario.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Usuario.cs",
+              "RelativeToolTip": "CapaDominio\\Usuario.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:20:36.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MateriaAlumno.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\MateriaAlumno.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\MateriaAlumno.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\MateriaAlumno.cs",
+              "RelativeToolTip": "CapaDominio\\MateriaAlumno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:25:33.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Materia.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Materia.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Materia.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Materia.cs",
+              "RelativeToolTip": "CapaDominio\\Materia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:19:07.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MateriaProfesor.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\MateriaProfesor.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\MateriaProfesor.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\MateriaProfesor.cs",
+              "RelativeToolTip": "CapaDominio\\MateriaProfesor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:21:39.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Nota.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Nota.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Nota.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Nota.cs",
+              "RelativeToolTip": "CapaDominio\\Nota.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:23:25.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Parentesco.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Parentesco.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Parentesco.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Parentesco.cs",
+              "RelativeToolTip": "CapaDominio\\Parentesco.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:19:39.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Rol.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Rol.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Rol.cs",
+              "RelativeToolTip": "CapaDominio\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T02:29:05.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TipoNota.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TipoNota.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\TipoNota.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TipoNota.cs",
+              "RelativeToolTip": "CapaDominio\\TipoNota.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:20:08.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Mensaje.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Mensaje.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\Mensaje.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\Mensaje.cs",
+              "RelativeToolTip": "CapaDominio\\Mensaje.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:21:06.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "CapaProfesores\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\Ema\\NoCountry-57-WebApp\\C23-57-webApp\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "CapaProfesores\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-15T01:12:55.911Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

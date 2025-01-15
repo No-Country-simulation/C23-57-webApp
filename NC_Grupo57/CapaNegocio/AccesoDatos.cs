@@ -20,7 +20,7 @@ namespace CapaNegocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=NCG57; integrated security=true;");
             comando = new SqlCommand();
 
         }

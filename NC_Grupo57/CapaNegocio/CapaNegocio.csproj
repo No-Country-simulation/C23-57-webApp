@@ -43,7 +43,13 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="EncriptadorContrasenias.cs" />
+    <Compile Include="MateriaNegocio.cs" />
+    <Compile Include="MensajeNegocio.cs" />
+    <Compile Include="NotaNegocio.cs" />
+    <Compile Include="ParentescoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolNegocio.cs" />
+    <Compile Include="TipoNotaNegocio.cs" />
     <Compile Include="UsuarioNegocio.cs" />
   </ItemGroup>
   <ItemGroup>

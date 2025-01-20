@@ -1,0 +1,6 @@
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\bin\Debug\CapaDominio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\bin\Debug\CapaDominio.pdb
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.AssemblyReference.cache
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.CoreCompileInputs.cache
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.pdb

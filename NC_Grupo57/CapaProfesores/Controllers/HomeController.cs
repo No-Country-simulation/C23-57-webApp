@@ -26,5 +26,35 @@ namespace CapaProfesores.Controllers
 
             return View();
         }
+
+        public ActionResult login()
+        {
+            return View();
+        }
+
+        public ActionResult register()
+        {
+            return View();
+        }
+
+        public ActionResult RegistroTutor()
+        {
+            return View();
+        }
+
+        public ActionResult RegistroEstudiante()
+        {
+            return View();
+        }
+
+        public ActionResult RegistroProfesor()
+        {
+            return View();
+        }
+
+        public ActionResult CrearCuenta()
+        {
+            return View();
+        }
     }
 }

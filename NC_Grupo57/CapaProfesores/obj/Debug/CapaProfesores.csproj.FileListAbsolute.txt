@@ -84,3 +84,5 @@ D:\C23-57-webApp\NC_Grupo57\CapaProfesores\obj\Debug\CapaProfesores.csproj.CoreC
 D:\C23-57-webApp\NC_Grupo57\CapaProfesores\obj\Debug\CapaProfesores.csproj.CopyComplete
 D:\C23-57-webApp\NC_Grupo57\CapaProfesores\obj\Debug\CapaProfesores.dll
 D:\C23-57-webApp\NC_Grupo57\CapaProfesores\obj\Debug\CapaProfesores.pdb
+D:\C23-57-webApp\NC_Grupo57\CapaProfesores\bin\CapaDominio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaProfesores\bin\CapaDominio.pdb

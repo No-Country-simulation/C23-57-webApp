@@ -1,33 +1,99 @@
 ﻿@{
     ViewBag.Title = "CAMBIO INNECESARIO";
+    @Styles.Render("~/styles/StyIndex.css")
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+    <!--encabezado-->
+    <header class="header">
+        <div class="header__back">
+            <div class="header__menu menu--container">
+                <label for="">
+                    <img class="logo" src="../imagenes/logo2.png" alt="">
+                </label>
+                <input type="checkbox" id="menu"><!--se utiliza el checkbox para crear el responsive del header de manera efectiva-->
+                <nav class="header__nav">
+                    <ul>
+                        <li>
+                            <label class="nav__item label--Eduflow" for="">Eduflow</label>
+                        </li>
+                        <li>
+                            <label class="nav__item label--Aboutus" for="">About us</label>
+                        </li>
+                        <li>
+                            <a class="nav__item button--signin" href="@Url.Action("Login")">sign in</a>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+<body>
+
+    <!--Primer Pantalla -->
+    <div class="desktop">
+        <div class="desktop__container container--edit">
+            <div class="container__h1">
+                <h1 class="desktop__h1 h1--titulo">Organiza tu tiempo, potencia tu enseñanza.</h1>
+            </div>
+            <div class="container__p">
+                <p class="desktop__p p--texto">
+                    Con Eduflow, no tienes nada que perder y todo por ganar. ¿Aún no te has registrado? ¡Regístrate ahora y comienza a aprovechar todas las ventajas!
+                </p>
+            </div>
+            <div class="container__button">
+                <a href="../registro/index.html" class="desktop__button button--registrate">REGISTRATE!</a>
+            </div>
+            <div class="desktop__img imagen--clase">
+                <img class="desktop__imagen" src="../imagenes/Unicwhite.jpg" alt="">
+            </div>
+        </div>
     </div>
-</main>
+    <!--segunda pantalla-->
+    <div class="desktop desktop__segundo">
+        <div class="desktop__container container--segundaPantalla">
+            <div class="container__h1 container__h2">
+                <h2 class="desktop__h1 h2--titulo">Con Eduflow Podrás</h2>
+            </div>
+            <div class="container__p container__p2screen">
+                <p class="desktop__p p--texto2screen">
+                    gestionar calificaciones, asistencia y ponerte en contacto con los padres de tus estudiantes en cualquier emergencia, todo en una sola plataforma. Olvídate de los documentos extensos y obtén el control y flow que necesitas para ser un excelente educador.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--tercera Pantalla-->
+    <div class="desktop desktop__tercero">
+        <div class="desktop__container container--terceraPantalla">
+            <div class="desktop__img desktop--imagen3">
+                <img class="desktop__imagen imagen--clase3" src="../imagenes/imagen-pagina3-first.jpg" alt="">
+            </div>
+            <div class="desktop__img imagen--segundaTercerScreen">
+                <img class="desktop__imagen imagen--clase3" src="../imagenes/imagen-pagina3-middle.jpg" alt="">
+            </div>
+            <div class="desktop__img imagen--terceraTercerScreen">
+                <img class="desktop__imagen imagen--clase3" src="../imagenes/imagen-pagina3-last.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!--cuarta pantalla-->
+    <div class="desktop desktop__cuarto">
+        <div class="desktop__container container--CuartaPantalla">
+            <div class="container__p p--containerScreen4">
+                <p class="desktop__p p--textoScreen4">
+                    Como estudiante, disfrutarás de ventajas como encontrar tutores que fortalecerán tus debilidades y te ayudarán a superar obstáculos en el camino
+                </p>
+            </div>
+            <div class="desktop__img imagen--containerScreen4">
+                <img class="desktop__imagen" src="../imagenes/imagen-pagina4.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!--quinta pagina footer-->
+    <footer>
+        <div class="desktop desktop__footer">
+
+        </div>
+    </footer>
+
+</body>

@@ -120,7 +120,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistroTutorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,9 +193,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
     <Content Include="Views\Home\register.cshtml" />
-    <Content Include="Views\Home\RegistroTutor.cshtml" />
+    <Content Include="Views\RegistroTutor\RegistroTutor.cshtml" />
     <Content Include="Views\Home\RegistroEstudiante.cshtml" />
     <Content Include="Views\Home\CrearCuenta.cshtml" />
+    <Content Include="Views\Administrador\AdminiHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

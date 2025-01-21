@@ -40,19 +40,7 @@ namespace CapaProfesores.Controllers
             return View();
         }
 
-        public ActionResult RegistroTutor()
-        {
-            RolNegocio negoRol = new RolNegocio();
-            List<Rol> roles = negoRol.obtenerTodosLosRoles();
-
-            if (roles == null || !roles.Any())
-            {
-                roles = new List<Rol>(); // Si está nula, inicializamos una lista vacía
-            }
-
-            ViewBag.Roles = roles; // Asignamos la lista al ViewBag
-            return View();
-        }
+        
 
         public ActionResult RegistroEstudiante()
         {

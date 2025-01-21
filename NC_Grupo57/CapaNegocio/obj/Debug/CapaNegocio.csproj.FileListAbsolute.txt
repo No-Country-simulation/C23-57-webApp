@@ -1,0 +1,9 @@
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\bin\Debug\CapaDominio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\bin\Debug\CapaDominio.pdb
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\C23-57-webApp\NC_Grupo57\CapaNegocio\obj\Debug\CapaNegocio.pdb

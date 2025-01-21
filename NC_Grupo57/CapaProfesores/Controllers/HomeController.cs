@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CapaDominio;
+using CapaNegocio;
 
 namespace CapaProfesores.Controllers
 {
@@ -24,6 +26,46 @@ namespace CapaProfesores.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult login()
+        {
+            return View();
+        }
+
+        public ActionResult register()
+        {
+
+            return View();
+        }
+
+        public ActionResult RegistroTutor()
+        {
+            RolNegocio negoRol = new RolNegocio();
+            List<Rol> roles = negoRol.obtenerTodosLosRoles();
+
+            if (roles == null || !roles.Any())
+            {
+                roles = new List<Rol>(); // Si está nula, inicializamos una lista vacía
+            }
+
+            ViewBag.Roles = roles; // Asignamos la lista al ViewBag
+            return View();
+        }
+
+        public ActionResult RegistroEstudiante()
+        {
+            return View();
+        }
+
+        public ActionResult RegistroProfesor()
+        {
+            return View();
+        }
+
+        public ActionResult CrearCuenta()
+        {
             return View();
         }
     }

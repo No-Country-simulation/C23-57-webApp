@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "RegistroTutor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/styles/StyTutor.css")
+}
+
+<body>
+    <!--simples input-->
+    <form action="">
+        <h2>formulario de registro</h2>
+        <fieldset>
+
+            <legend>Información Basica</legend>
+            <div class="form__div">
+                <label for="select">Tipo De Usuario</label>
+                <select name="type-of-user" id="select">
+                    @foreach (var rol in ViewBag.Roles)
+                    {
+                        <option value="@rol.Id_Rol">@rol.Descripcion</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form__div">
+                <label for="Apellido">Apellido</label>
+                <input class="form__input" id="Apellido" type="text" placeholder="Rojas Figueroa">
+            </div>
+            <div class="form__div">
+                <label for="Nombre">Nombre</label>
+                <input class="form__input" id="Nombre" type="text" placeholder="Juan Camilo">
+            </div>
+            <div class="form__div">
+                <label for="celular">Celular</label>
+                <input class="form__input" id="celular" type="text" placeholder="+54 9 11 3033-4899">
+            </div>
+
+        </fieldset>
+        <div class="form__button">
+            <a class="form__link" href="@Url.Action("CrearCuenta")">Siguiente</a>
+        </div>
+
+    </form>
+</body>
+

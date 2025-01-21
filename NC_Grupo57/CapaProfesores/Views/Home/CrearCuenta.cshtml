@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "CrearCuenta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Styles.Render("~/styles/StyCuenta.css")
+}
+
+<body>
+    <!--simples input-->
+    <form action="">
+        <h2>Datos Finales</h2>
+        <div class="form__div">
+            <label for="email">Correo Electronico</label>
+            <input class="form__input" id="email" type="email" placeholder="ejemplo@dominio.com">
+        </div>
+        <div class="form__div">
+            <label for="email">Contraseña</label>
+            <input class="form__input" id="email" type="password" placeholder="xxxxx">
+        </div>
+        <div class="form__div">
+            <label for="email">Confima Contraseña</label>
+            <input class="form__input" id="email" type="password" placeholder="xxxxx">
+        </div>
+
+
+
+        <!--datalist y option-->
+        <div class="form__div">
+            <label for="referente">Quien nos recomendo?</label>
+            <input class="form__input" list="referente" placeholder="Colegio">
+            <datalist id="referente" name="type-of-user">
+                <option>Instituto</option>
+                <option>Universidad</option>
+                <option>Profesor</option>
+                <option>Amigo</option>
+            </datalist>
+        </div>
+
+
+
+        <!--checkbox-->
+        <div class="form__div">
+            <label for="checkbox">acepto terminos y condiciones <a class="form__condiciones" href="">Mostrar</a></label>
+            <input type="checkbox" name="" class="checkbox" id="checkbox">
+        </div>
+        <div class="form__submit ">
+            <input class="form__submit2 " type="submit">
+        </div>
+
+    </form>
+</body>
+

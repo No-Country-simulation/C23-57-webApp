@@ -1,0 +1,90 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#0000007a, transparent);
+    height: 100vh;
+    font-size: 16px;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.form__div {
+    padding: 6px 12px;
+    box-sizing: border-box;
+}
+
+    .form__div h2 {
+        text-align: center;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid #c0c0c0;
+    }
+
+.form__input {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 12px;
+    margin: 30px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #adadad;
+    border-radius: 2px;
+    font-size: 1em;
+}
+
+.form__label {
+    position: relative;
+    color: #adadad;
+    font-size: 1em;
+    top: 15px;
+}
+
+.form__recuperarContraseña {
+    margin: -5px 0 20px 5px;
+    color: blue;
+    cursor: pointer;
+}
+
+    .form__recuperarContraseña:hover {
+        text-decoration: underline;
+    }
+
+.form__inputSubmit {
+    position: relative;
+    left: 25px;
+    width: 85%;
+    height: 50px;
+    border: 1px solid;
+    background-color: #82e0aa;
+    border-radius: 25px;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+    color: #fff;
+    cursor: pointer;
+}
+
+    .form__inputSubmit:hover {
+        border-color: #82e0aa;
+        transition: .5s;
+    }
+
+.form__HacerRegistro {
+    margin: 30px 0;
+    text-align: center;
+    font-size: 1em;
+    color: #000;
+}
+
+.form__linkRegistro {
+    color: #0000ff;
+    text-decoration: none;
+}

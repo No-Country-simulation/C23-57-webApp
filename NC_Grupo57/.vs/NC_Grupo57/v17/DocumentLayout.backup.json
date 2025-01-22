@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\capaprofesores\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|solutionrelative:capaprofesores\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|c:\\users\\niss\\desktop\\no country\\c23-57-webapp\\nc_grupo57\\capaprofesores\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|solutionrelative:capaprofesores\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\capaprofesores\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|solutionrelative:capaprofesores\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81FC91FF-B3C6-4526-9B85-45EFF415FEB7}|CapaProfesores\\CapaProfesores.csproj|c:\\users\\niss\\desktop\\no country\\c23-57-webapp\\nc_grupo57\\capaprofesores\\permisos\\permisosrolattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,33 +102,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Web.config",
-              "RelativeDocumentMoniker": "CapaProfesores\\Web.config",
-              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Web.config",
-              "RelativeToolTip": "CapaProfesores\\Web.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-01-22T00:48:08.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TutorAlumno.cs",
-              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
-              "RelativeDocumentMoniker": "CapaDominio\\TutorAlumno.cs",
-              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
-              "RelativeToolTip": "CapaDominio\\TutorAlumno.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T01:22:58.774Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 5,
@@ -209,15 +184,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LoginController.cs",
               "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "CapaProfesores\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "CapaProfesores\\Controllers\\LoginController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Controllers\\LoginController.cs*",
+              "RelativeToolTip": "CapaProfesores\\Controllers\\LoginController.cs*",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T01:01:03.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TutorAlumno.cs",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
+              "RelativeDocumentMoniker": "CapaDominio\\TutorAlumno.cs",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaDominio\\TutorAlumno.cs",
+              "RelativeToolTip": "CapaDominio\\TutorAlumno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T01:22:58.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Web.config",
+              "RelativeDocumentMoniker": "CapaProfesores\\Web.config",
+              "ToolTip": "C:\\Users\\Niss\\Desktop\\No Country\\C23-57-webApp\\NC_Grupo57\\CapaProfesores\\Web.config",
+              "RelativeToolTip": "CapaProfesores\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-01-22T00:48:08.7Z",
               "EditorCaption": ""
             },
             {

@@ -17,11 +17,10 @@
                             <label class="nav__item label--Eduflow" for="">Eduflow</label>
                         </li>
                         <li>
-                            <label class="nav__item label--Aboutus" for="">About us</label>
+                            <a class="nav__item label--Aboutus" for="" href="@Url.Action("About")">About us</a>
                         </li>
                         <li>
                             <a class="nav__item button--signin" href="@Url.Action("Login")">sign in</a>
-
                         </li>
                     </ul>
                 </nav>
@@ -42,7 +41,7 @@
                 </p>
             </div>
             <div class="container__button">
-                <a href="../registro/index.html" class="desktop__button button--registrate">REGISTRATE!</a>
+                <a href="@Url.Action("register")" class="desktop__button button--registrate">REGISTRATE!</a>
             </div>
             <div class="desktop__img imagen--clase">
                 <img class="desktop__imagen" src="../imagenes/Unicwhite.jpg" alt="">

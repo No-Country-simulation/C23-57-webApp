@@ -39,6 +39,10 @@ namespace CapaNegocio
                                 Fecha_Nacimiento, Fecha_Alta, Activo 
                          From Usuarios 
                          Where Id_Usuario = @IdUsuario";
+        private string QueryBuscarPorEmail = @"Select Id_Usuario, Id_Rol, Nombre, Apellido, DNI, Telefono, Email, 
+                                Fecha_Nacimiento, Fecha_Alta, Activo 
+                         From Usuarios 
+                         Where Email = @Email";
         public void agregarUsuario(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -173,6 +177,48 @@ namespace CapaNegocio
             {
                 datos.settearConsulta(QueryBuscarPorID);
                 datos.setearParametro("@IdUsuario", idUsuario);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    usuario = new Usuario
+                    {
+                        Id_Usuario = Convert.ToInt64(datos.Lector["Id_Usuario"]),
+                        Id_Rol = Convert.ToInt32(datos.Lector["Id_Rol"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        DNI = datos.Lector["DNI"].ToString(),
+                        Telefono = datos.Lector["Telefono"].ToString(),
+                        Email = datos.Lector["Email"].ToString(),
+                        Fecha_Nacimiento = Convert.ToDateTime(datos.Lector["Fecha_Nacimiento"]),
+                        Fecha_Alta = Convert.ToDateTime(datos.Lector["Fecha_Alta"]),
+                        Activo = Convert.ToBoolean(datos.Lector["Activo"])
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return usuario;
+        }
+
+        //Estaría bueno que se pueda buscar por email también
+
+        public Usuario buscarPorEmail(string email)
+        {
+            Usuario usuario = null;
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.settearConsulta(QueryBuscarPorEmail);
+                datos.setearParametro("@Email", email);
                 datos.ejecutarLectura();
 
                 if (datos.Lector.Read())

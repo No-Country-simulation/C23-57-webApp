@@ -120,7 +120,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfesorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,6 +175,8 @@
     <Content Include="styles\StyCuenta.css" />
     <Content Include="styles\StyIndex.css" />
     <Content Include="styles\StyLogin.css" />
+    <Content Include="styles\StyPpalAdmin.css" />
+    <Content Include="styles\StyPpalProfesor.css" />
     <Content Include="styles\STyRegister.css" />
     <Content Include="styles\StyTutor.css" />
     <Content Include="Web.config" />
@@ -194,6 +198,8 @@
     <Content Include="Views\Home\RegistroTutor.cshtml" />
     <Content Include="Views\Home\RegistroEstudiante.cshtml" />
     <Content Include="Views\Home\CrearCuenta.cshtml" />
+    <Content Include="Views\Admin\PrincipalAdmin.cshtml" />
+    <Content Include="Views\Profesor\PrincipalProfesor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

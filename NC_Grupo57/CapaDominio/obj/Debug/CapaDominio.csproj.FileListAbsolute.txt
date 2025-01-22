@@ -4,3 +4,9 @@ D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.AssemblyRef
 D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.CoreCompileInputs.cache
 D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.dll
 D:\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.pdb
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\bin\Debug\CapaDominio.dll
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\bin\Debug\CapaDominio.pdb
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.AssemblyReference.cache
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.csproj.CoreCompileInputs.cache
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.dll
+C:\Users\Niss\Desktop\No Country\C23-57-webApp\NC_Grupo57\CapaDominio\obj\Debug\CapaDominio.pdb

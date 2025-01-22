@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CapaDominio;
 using CapaNegocio;
+//using CapaProfesores.Permisos;
 
 namespace CapaProfesores.Controllers
 {
@@ -15,6 +16,7 @@ namespace CapaProfesores.Controllers
             return View();
         }
 
+        //[PermisosRol(1)]  -> Autorizo acceso sólo al Id_Rol = 1 (Administrador)
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

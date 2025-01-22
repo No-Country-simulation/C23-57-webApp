@@ -6,13 +6,13 @@
 }
 
 <body>
-    <form class="form" action="" method="ps">
+    <form class="form" action="@Url.Action("login", "Login")" method="post">
         <div class="form__div">
             <h2>inicio de sesion</h2>
             <label class="form__label" for="mail">Correo Electronico</label>
-            <input class="form__input input--email" type="email" id="mail" placeholder="ejemplo@gmail.com">
+            <input class="form__input input--email" type="email" id="mail" placeholder="ejemplo@gmail.com" name="correo">
             <label class="form__label" for="password">Contraseña</label>
-            <input id="password" class="form__input input--password" type="password" placeholder="xxxxxxx">
+            <input id="password" class="form__input input--password" type="password" placeholder="xxxxxxx" name="clave">
             <div class="form__recuperarContraseña">¿olvide mi contraseña?</div>
             <input class="form__inputSubmit " type="submit" value="iniciar">
             <div class="form__HacerRegistro">¿No has hecho tu <a href="@Url.Action("register")" class="form__linkRegistro">registro</a>?</div>

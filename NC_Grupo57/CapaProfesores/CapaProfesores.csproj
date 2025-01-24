@@ -156,6 +156,7 @@
     <Content Include="imagenes\imagen-pagina3-last.jpg" />
     <Content Include="imagenes\imagen-pagina3-middle.jpg" />
     <Content Include="imagenes\imagen-pagina4.jpg" />
+    <Content Include="imagenes\logo2 1.png" />
     <Content Include="imagenes\logo2.png" />
     <Content Include="imagenes\Unicwhite.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />

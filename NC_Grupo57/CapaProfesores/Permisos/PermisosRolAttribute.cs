@@ -27,7 +27,7 @@ namespace CapaProfesores.Permisos
 
             Usuario user = HttpContext.Current.Session["Usuario"] as Usuario;
 
-            if (user.Id_Rol != _idRol)
+            if (user == null || user.Id_Rol != _idRol || !user.Activo)
             {
                 filterContext.Result = new RedirectResult("~/Home/login");
             }

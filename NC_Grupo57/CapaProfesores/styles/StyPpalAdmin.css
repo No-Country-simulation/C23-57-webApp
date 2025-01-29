@@ -102,6 +102,15 @@
     margin-bottom: 20px;
 }
 
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.edit-btn, .delete-btn, .view-btn {
+    margin-left: 0; 
+    padding: 10px 15px;
+}
 .materia-header {
     display: flex;
     justify-content: space-between;
@@ -113,11 +122,14 @@
 }
 
 .delete-btn {
-    background: none;
+    background-color: #dc3545;
+    color: white;
     border: none;
-    cursor: pointer;
-    font-size: 16px;
 }
+    .delete-btn:hover {
+        background-color: #c82333;
+        color: white;
+    }
 
 .data-table {
     width: 100%;

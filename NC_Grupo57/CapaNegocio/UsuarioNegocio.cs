@@ -68,7 +68,6 @@ namespace CapaNegocio
                 datos.setearParametro("@FechaNacimiento", usuario.Fecha_Nacimiento);
                 datos.setearParametro("@FechaAlta", usuario.Fecha_Alta);
                 datos.setearParametro("@Contrasenia", contraseniaEncriptada); //mando la encriptada, no la literal
-                datos.setearParametro("@Activo", usuario.Activo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -560,7 +559,7 @@ namespace CapaNegocio
                 datos.setearParametro("@Id", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
                 //throw ex;
@@ -577,7 +576,7 @@ namespace CapaNegocio
                 datos.setearParametro("@Id", id);
                 datos.ejecutarAccion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
                 //throw ex;

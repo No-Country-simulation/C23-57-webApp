@@ -239,19 +239,16 @@
                             @Html.Hidden("Codigo_Comision")
                             @Html.Hidden("Id_Tipo_Nota")
 
-
-                            <input type="hidden" name="Id_Tipo_Nota">
-
-
                             <div class="mb-3">
                                 <label class="form-label">Tipo de Nota</label>
                                 <input type="text" id="tipoNota" class="form-control" disabled>
                             </div>
 
-
                             <div class="mb-3">
                                 <label class="form-label">Calificación</label>
-                                <input type="number" name="Calificacion" id="calificacion" class="form-control" step="0.01" min="0" max="10" required>
+                                <input type="number" name="Calificacion" id="calificacion" class="form-control"
+                                       step="1" min="0" max="10" required>
+                                <small class="text-danger d-none" id="calificacionError">Por favor ingrese una calificación válida entre 0 y 10.</small>
                             </div>
 
                             <div class="mb-3">
@@ -260,7 +257,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="document.getElementById('formEditarNota').submit();">Guardar Cambios</button>
+                                <button type="button" class="btn btn-primary" onclick="validarYEnviar();">Guardar Cambios</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         }
@@ -299,26 +296,66 @@
             var modalNoNotas = new bootstrap.Modal(document.getElementById('modalNoNotas'));
             modalNoNotas.show();
         }
-    
+        function validarYEnviar() {
+            var calificacionInput = document.getElementById("calificacion");
+            var valorTexto = calificacionInput.value.trim().replace(",", "."); // Convertir coma en punto
+            var errorMsg = document.getElementById("calificacionError");
+
+            // Si el campo está vacío o no es un número válido
+            if (valorTexto === "" || isNaN(valorTexto)) {
+                errorMsg.classList.remove("d-none");
+                calificacionInput.classList.add("is-invalid");
+                return;
+            }
+
+            // Convertir a número
+            var calificacion = parseFloat(valorTexto);
+
+            // Validar rango
+            if (calificacion < 0 || calificacion > 10) {
+                errorMsg.classList.remove("d-none");
+                calificacionInput.classList.add("is-invalid");
+                return;
+            }
+            
+            // Si todo es válido, ocultar el error y enviar el formulario
+            errorMsg.classList.add("d-none");
+            calificacionInput.classList.remove("is-invalid");
+            calificacionInput.value = calificacion; // Asegurar que se envía con punto decimal
+            document.getElementById("formEditarNota").submit();
+        }
+
+
+
         function abrirModalEditarNota(idUsuario, codigoComision, idTipoNota, tipoNotaDescripcion, calificacion, observaciones) {
             var modal = document.getElementById('modalEditarNota');
+
+            console.log("Valores recibidos:", { idUsuario, codigoComision, idTipoNota, tipoNotaDescripcion, calificacion, observaciones });
 
             // Asignar valores a los inputs ocultos
             modal.querySelector("input[name='Id_Usuario_Alumno']").value = idUsuario;
             modal.querySelector("input[name='Codigo_Comision']").value = codigoComision;
-            modal.querySelector("input[name='Id_Tipo_Nota']").value = idTipoNota;  // Se enviará en el formulario
+            modal.querySelector("input[name='Id_Tipo_Nota']").value = idTipoNota;
 
-            // Mostrar la descripción del tipo de nota en un campo deshabilitado
-            modal.querySelector("#tipoNota").value = tipoNotaDescripcion;  // Solo visible, no se envía
+            // Mostrar la descripción del tipo de nota
+            modal.querySelector("#tipoNota").value = tipoNotaDescripcion;
 
-            // Asignar calificación y observaciones
-            modal.querySelector("#calificacion").value = calificacion;
+            // Asignar calificación (conversión si es necesario)
+            var inputCalificacion = modal.querySelector("#calificacion");
+            if (inputCalificacion) {
+                inputCalificacion.value = parseFloat(calificacion) || '';
+            } else {
+                console.error("Input de calificación no encontrado.");
+            }
+
+            // Asignar observaciones
             modal.querySelector("#observaciones").value = observaciones;
 
             // Mostrar el modal
             var bootstrapModal = new bootstrap.Modal(modal);
             bootstrapModal.show();
         }
+
 
 
 

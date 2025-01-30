@@ -15,7 +15,7 @@ namespace CapaNegocio
         private string QueryAgregar = @"Insert Into Usuarios 
                              (Id_Rol, Nombre, Apellido, DNI, Telefono, Email, Fecha_Nacimiento, Fecha_Alta, Contrasenia, Activo) 
                              Values 
-                             (@IdRol, @Nombre, @Apellido, @DNI, @Telefono, @Email, @FechaNacimiento, @FechaAlta, @Contrasenia, @Activo)";
+                             (@IdRol, @Nombre, @Apellido, @DNI, @Telefono, @Email, @FechaNacimiento, @FechaAlta, @Contrasenia, 0)";
         private string QueryLogin = "Select Contrasenia From Usuarios Where Email = @Email";
         private string QueryModificar = @"Update Usuarios 
                                   Set 
@@ -36,11 +36,6 @@ namespace CapaNegocio
                                 Fecha_Nacimiento, Fecha_Alta, Activo 
                                 From Usuarios 
                                 Where Id_Rol = @IdRol";
-        private string QueryBuscarProfesoresInactivos = @"Select Id_Usuario, Id_Rol, Nombre, Apellido, DNI, Telefono, Email, 
-                                Fecha_Nacimiento, Fecha_Alta, Activo 
-                                From Usuarios 
-                                Where Id_Rol = 3
-                                AND Activo = 0";
         private string QueryBuscarProfesoresxMateria = @"Select u.Id_Usuario, u.Id_Rol, u.Nombre, u.Apellido, u.DNI, u.Telefono, u.Email, 
                                 u.Fecha_Nacimiento, u.Fecha_Alta, u.Activo
                                 FROM Usuarios u
@@ -439,7 +434,7 @@ namespace CapaNegocio
         }
 
 
-        public void EliminarMateria(int id)
+        public bool EliminarMateria(int id)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -451,6 +446,7 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
+                return false;
                 throw ex;
             }
             finally
@@ -468,12 +464,14 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
+                return false;
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }
+            return true;
         }
 
 
@@ -528,7 +526,7 @@ namespace CapaNegocio
             return profesores;
         }
 
-        public void eliminarProfesorxMateria(int idProfesor, int idMateria)
+        public bool eliminarProfesorxMateria(int idProfesor, int idMateria)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -541,15 +539,17 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
+                return false;
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }
+            return true;
         }
         
-        public void EliminarProfesor(int id)
+        public bool EliminarProfesor(int id)
         {
 
             AccesoDatos datos = new AccesoDatos();
@@ -562,7 +562,8 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
+                //throw ex;
             }
             finally
             {
@@ -578,12 +579,14 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
+                //throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }
+            return true;
         }
         public bool AgregarMateria(string nombre)
         {

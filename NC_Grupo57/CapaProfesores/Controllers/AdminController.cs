@@ -64,14 +64,20 @@ namespace CapaProfesores.Controllers
         [HttpPost]
         public ActionResult EliminarMateria(int id)
         {
-            user.EliminarMateria(id);
+            if (!user.EliminarMateria(id))
+            {
+                return RedirectToAction("PrincipalAdmin");
+            }
             return RedirectToAction("PrincipalAdmin");
         }
 
         [HttpPost]
         public ActionResult EliminarProfesor(int id)
         {
-            user.EliminarProfesor(id);
+            if (user.EliminarProfesor(id))
+            {
+                return RedirectToAction("PrincipalAdmin", new { vista = "Profesores" });
+            }
             return RedirectToAction("PrincipalAdmin", new { vista = "Profesores" });
         }
 
@@ -126,7 +132,10 @@ namespace CapaProfesores.Controllers
         [HttpPost]
         public ActionResult QuitarProfesorDeMateria(int idProfesor, int idMateria)
         {
-            user.eliminarProfesorxMateria(idProfesor, idMateria);
+            if (!user.eliminarProfesorxMateria(idProfesor, idMateria))
+            {
+                return RedirectToAction("PrincipalAdmin", new { vista = "Materias" });
+            }
 
             // Recargar la lista de profesores asignados a la materia
             var materiasxProfesor = user.obtenerProfesoresxMateria(idMateria);

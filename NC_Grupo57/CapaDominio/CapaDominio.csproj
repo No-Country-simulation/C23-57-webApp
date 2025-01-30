@@ -46,6 +46,7 @@
     <Compile Include="MateriaProfesor.cs" />
     <Compile Include="Mensaje.cs" />
     <Compile Include="Nota.cs" />
+    <Compile Include="NotaAlumno.cs" />
     <Compile Include="Parentesco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />

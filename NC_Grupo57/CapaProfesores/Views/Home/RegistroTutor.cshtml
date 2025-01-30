@@ -7,7 +7,7 @@
 
 <body>
 
-    <form action="@Url.Action("RegistroTutor")" method="post">
+    <form action="@Url.Action("RegistroTutor", "Register")" method="post">
         <h2>Formulario de registro</h2>
         <fieldset>
             <legend>Información Básica</legend>
@@ -17,26 +17,26 @@
                 <select name="typeofuser" id="select">
                     @foreach (var rol in ViewBag.Roles)
                     {
-                        <option name="tipo" value="@rol.Id_Rol">@rol.Descripcion</option>
+                        <option value="@rol.Id_Rol">@rol.Descripcion</option>
                     }
                 </select>
             </div>
 
             <div class="form__div">
                 <label for="Apellido">Apellido</label>
-                <input class="form__input" id="Apellido" type="text" placeholder="Rojas Figueroa" name="txtApellido" required>
+                <input class="form__input" id="Apellido" type="text" name="txtApellido" required>
             </div>
             <div class="form__div">
                 <label for="Nombre">Nombre</label>
-                <input class="form__input" id="Nombre" type="text" placeholder="Juan Camilo" name="txtNombre" required>
+                <input class="form__input" id="Nombre" type="text" name="txtNombre" required>
             </div>
             <div class="form__div">
                 <label for="celular">Celular</label>
-                <input class="form__input" id="celular" type="text" placeholder="+54 9 11 3033-4899" name="txtTel" required>
+                <input class="form__input" id="celular" type="text" name="txtTel" required>
             </div>
             <div class="form__div">
                 <label for="dni">DNI</label>
-                <input class="form__input" id="dni" type="text" placeholder="22333444" name="txtDni" required>
+                <input class="form__input" id="dni" type="text" name="txtDni" required>
             </div>
             <div class="form__div">
                 <label for="fechaNacimiento">Fecha de Nacimiento</label>
@@ -44,15 +44,15 @@
             </div>
             <div class="form__div">
                 <label for="email">Correo Electrónico</label>
-                <input class="form__input" id="email" type="email" placeholder="ejemplo@dominio.com" name="txtMail" required>
+                <input class="form__input" id="email" type="email" name="txtMail" required>
             </div>
             <div class="form__div">
                 <label for="password1">Contraseña</label>
-                <input class="form__input" id="password1" type="password" placeholder="xxxxx" name="txtPass1" required>
+                <input class="form__input" id="password1" type="password" name="txtPass1" required>
             </div>
             <div class="form__div">
                 <label for="password2">Confirma Contraseña</label>
-                <input class="form__input" id="password2" type="password" placeholder="xxxxx" name="txtPass2" required>
+                <input class="form__input" id="password2" type="password" name="txtPass2" required>
             </div>
         </fieldset>
 
@@ -65,6 +65,12 @@
     {
         <div class="alert alert-success">
             @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
         </div>
     }
 

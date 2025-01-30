@@ -154,3 +154,91 @@
 .alumnos-table td:last-child {
     width: 30%;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+/* Alinear el contenido de la tabla */
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Ajustar los botones para que tengan el mismo tamaño y estén alineados */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    font-size: 16px;
+}
+.sidebar-tab {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px;
+}
+
+    .sidebar-tab:hover {
+        background-color: #d6d6d6;
+    }
+
+    .sidebar-tab.active {
+        background-color: #f36c21;
+        color: #ffffff;
+    }
+
+.nav-button {
+    background-color: #f36c21;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    .nav-button:hover {
+        background-color: #e65b1b;
+    }
+/* Evitar que los iconos se vean desproporcionados */
+.bi {
+    font-size: 18px; /* Ajusta según tu preferencia */
+}
+
+/* Ajustar las celdas de los botones */
+.table td:last-child, .table td:nth-last-child(2) {
+    width: 100px; /* Ajusta el ancho según necesidad */
+}
+

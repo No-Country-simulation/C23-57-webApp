@@ -14,6 +14,7 @@ namespace CapaNegocio
         private string QueryBajaFisica = "Delete From Tipos_Nota Where Id_Tipo_Nota = @IdTipoNota";
         private string QueryModificar = "Update Tipos_Nota Set Descripcion = @Descripcion, Activo = @Activo Where Id_Tipo_Nota = @IdTipoNota";
         private string QueryObtenerTodas = "Select Id_Tipo_Nota, Descripcion, Activo From Tipos_Nota";
+        private string QueryObtenerTodasLasActivas = "Select Id_Tipo_Nota, Descripcion, Activo From Tipos_Nota where activo = 1";
         public void agregarTipoNota(TipoNota tipoNota)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -94,6 +95,35 @@ namespace CapaNegocio
         }
 
         public List<TipoNota> obtenerTodosLosTiposNota()
+        {
+            List<TipoNota> tiposNota = new List<TipoNota>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.settearConsulta(QueryObtenerTodasLasActivas);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    TipoNota tipoNota = new TipoNota
+                    {
+                        Id_Tipo_Nota = (int)datos.Lector["Id_Tipo_Nota"],
+                        Descripcion = (string)datos.Lector["Descripcion"],
+                        Activo = (bool)datos.Lector["Activo"]
+                    };
+                    tiposNota.Add(tipoNota);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return tiposNota;
+        }
+        public List<TipoNota> obtenerTodosLosTiposNotaActivos()
         {
             List<TipoNota> tiposNota = new List<TipoNota>();
             AccesoDatos datos = new AccesoDatos();

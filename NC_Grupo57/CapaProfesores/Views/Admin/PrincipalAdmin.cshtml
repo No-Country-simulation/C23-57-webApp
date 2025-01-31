@@ -1,53 +1,328 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "PrincipalAdmin";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @Styles.Render("~/styles/StyPpalAdmin.css")
 }
-<!--
-    En esta pag habíamos quedado que tenía que tener dos botones, desplegable, menú o lo que fuere para poder
-    elegir materias o profesores y un listado para que desde el back lo carguemos con materias o profesores
-    según corresponda. Cada fila dijimos que, si se puede, tenga dos botones: uno para eliminar y otro para modificar.
-    Fuera de la tabla tiene que haber un botón que diga agregar (Solo agregar, ya que dependiendo de la tabla que esté
-    activada podemos programar desde el back para agregue un profesor o una materia)
--->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDU Flow</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @Styles.Render("~/styles/StyPpalAdmin.css")
+
 </head>
+@{
+    var materias = ViewBag.Materias as IEnumerable<dynamic>;
+    //var profesoresAsignados = ViewBag.ProfesoresAsignados;
+}
 <body>
     <header class="header">
-
         <div class="logo"><img class="logo" src="../imagenes/logo2 1.png" alt="Logo"></div>
         <nav class="header__nav">
             <button class="nav-button" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Log out</button>
         </nav>
-
     </header>
+
     <div class="main-container">
         <div class="sidebar">
-            <button class="sidebar-tab">Materias</button>
-            <button class="sidebar-tab active">Profesores</button>
+            <form action="@Url.Action("PrincipalAdmin", "Admin")" method="post">
+                <input type="hidden" name="vista" value="Materias">
+                <button class="sidebar-tab @(ViewBag.VistaActual == "Materias" ? "active" : "")" type="submit">Materias</button>
+            </form>
+            <form action="@Url.Action("PrincipalAdmin", "Admin")" method="post">
+                <input type="hidden" name="vista" value="Profesores">
+                <button class="sidebar-tab @(ViewBag.VistaActual == "Profesores" ? "active" : "")" type="submit">Profesores</button>
+            </form>
         </div>
         <div class="content">
             <div class="content-box">
                 <h2>Listado</h2>
-                <div class="materia">
-                    <div class="materia-header">
-                        <span>Matemática</span>
-                        <span class="rotated-pencil">&#x270F;</span>
-                        <button class="delete-btn">&#x1F5D1;</button>
+
+                @if (ViewBag.VistaActual == "Profesores")
+                {
+                    <!-- Formulario para filtrar profesores -->
+                    <form action="@Url.Action("FiltrarProfesores", "Admin")" method="post">
+                        <select name="filtro" onchange="this.form.submit()">
+                            <option value="Todos" @(ViewBag.Filtro == "Todos" ? "selected" : "")>Todos</option>
+                            <option value="Activos" @(ViewBag.Filtro == "Activos" ? "selected" : "")>Activos</option>
+                            <option value="Inactivos" @(ViewBag.Filtro == "Inactivos" ? "selected" : "")>Inactivos</option>
+                        </select>
+                    </form>
+                    <hr />
+
+                    if (ViewBag.Profesores != null)
+                    {
+                        foreach (var profesor in ViewBag.Profesores)
+                        {
+                            <div class="materia">
+                                <div class="materia-header">
+                                    <span>@profesor.Nombre @profesor.Apellido @profesor.DNI</span>
+                                    <div class="action-buttons">
+                                        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarProfesorModal-@profesor.Id_Usuario">&#x270F;</button>
+                                        <form action="@Url.Action("EliminarProfesor", "Admin")" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@profesor.Id_Usuario">
+                                            <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal para Modificar Profesor -->
+                            <div class="modal fade" id="modificarProfesorModal-@profesor.Id_Usuario" tabindex="-1" role="dialog" aria-labelledby="modificarProfesorModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modificarProfesorModalLabel">Modificar Profesor</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="@Url.Action("ModificarProfesor", "Admin")" method="post">
+                                                <input type="hidden" name="id" value="@profesor.Id_Usuario">
+                                                <div class="form-group">
+                                                    <label for="nombreProfesor-@profesor.Id_Usuario">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombreProfesor-@profesor.Id_Usuario" name="nombre" value="@profesor.Nombre" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="apellidoProfesor-@profesor.Id_Usuario">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellidoProfesor-@profesor.Id_Usuario" name="apellido" value="@profesor.Apellido" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dniProfesor-@profesor.Id_Usuario">DNI</label>
+                                                    <input type="text" class="form-control" id="dniProfesor-@profesor.Id_Usuario" name="dni" value="@profesor.DNI" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="emailProfesor-@profesor.Id_Usuario">Email</label>
+                                                    <input type="email" class="form-control" id="emailProfesor-@profesor.Id_Usuario" name="email" value="@profesor.Email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="activoProfesor-@profesor.Id_Usuario">Activo</label>
+                                                    <select class="form-control" id="activoProfesor-@profesor.Id_Usuario" name="activo">
+                                                        <option value="True" @(profesor.Activo ? "selected" : "")>Sí</option>
+                                                        <option value="False" @(!profesor.Activo ? "selected" : "")>No</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Modificar Profesor</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No hay profesores disponibles.</p>
+                    }
+                }
+                else if (ViewBag.VistaActual == "Materias")
+                {
+                    var profesoresAsignados = TempData["ProfesoresAsignados"] as IEnumerable<dynamic>;
+                    var materiaId = TempData["MateriaId"] as int?;
+                    var profesoresMaterias = TempData["ProfesoresMaterias"] as IEnumerable<dynamic>;
+
+                    if (materias != null && materias.Count() > 0)
+                    {
+                        for (int i = 0; i < ViewBag.Materias.Count; i++)
+                        {
+                            var materia = ViewBag.Materias[i];
+                            dynamic materiaProfesor = null;
+
+                            if (ViewBag.MateriasxProfesor != null && ((IEnumerable<dynamic>)ViewBag.MateriasxProfesor).Any())
+                            {
+                                foreach (var item in ViewBag.MateriasxProfesor)
+                                {
+                                    if (item.Id_Materia == materia.Id_Materia)
+                                    {
+                                        materiaProfesor = item;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            var codigoComision = materiaProfesor?.Codigo_Comision;
+                            var profesorId = materia?.Id_Materia;
+                            var activo = materiaProfesor?.Activo;
+
+                            <div class="materia">
+                                <div class="materia-header">
+                                    <span>@materia.Nombre</span>
+                                    <div class="action-buttons">
+                                        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                        <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@materia.Id_Materia">
+                                            <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                        </form>
+                                        <!-- Nuevo botón con ícono de ojo -->
+                                        <form action="@Url.Action("VerProfesoresAsignados", "Admin")" method="post" style="display:inline;">
+                                            <input type="hidden" name="idMateria" value="@materia.Id_Materia">
+                                            <button class="view-btn btn btn-info" type="submit">&#x1F441;</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal para Ver Profesores Asignados -->
+                            if (materiaId != null && materiaId == materia.Id_Materia)
+                            {
+                                <div class="modal fade show" id="verProfesoresModal-@materia.Id_Materia" tabindex="-1" role="dialog" aria-labelledby="verProfesoresModalLabel-@materia.Id_Materia" aria-hidden="false" style="display: block;">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="verProfesoresModalLabel-@materia.Id_Materia">Profesores Asignados a @materia.Nombre</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @if (profesoresAsignados != null)
+                                                {
+                                                    var profesoresDeLaMateria = new List<dynamic>();
+                                                    foreach (var profesor in profesoresMaterias)
+                                                    {
+                                                        if (profesor.Id_Materia == materia.Id_Materia)
+                                                        {
+                                                            profesoresDeLaMateria.Add(profesor);
+                                                        }
+                                                    }
+
+                                                    if (profesoresDeLaMateria.Count > 0)
+                                                    {
+                                                        <div class="form-group">
+                                                            <label>Profesores Asignados:</label>
+                                                            <ul class="list-group">
+                                                                @foreach (var profesor in profesoresAsignados)
+                                                                {
+                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                        @profesor.Nombre @profesor.Apellido @profesor.DNI
+                                                                        <!-- Botón para quitar profesor -->
+                                                                        <form action="@Url.Action("QuitarProfesorDeMateria", "Admin")" method="post" style="margin: 0;">
+                                                                            <input type="hidden" name="idProfesor" value="@profesor.Id_Usuario">
+                                                                            <input type="hidden" name="idMateria" value="@materia.Id_Materia">
+                                                                            <button type="submit" class="btn btn-danger btn-sm">&#x1F5D1; Quitar</button>
+                                                                        </form>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>No hay profesores asignados a esta materia.</p>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <p>No hay profesores asignados a esta materia.</p>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <!-- Modal para Editar Materia -->
+                            <div class="modal fade" id="editarMateriaModal-@materia.Id_Materia" tabindex="-1" role="dialog" aria-labelledby="editarMateriaModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editarMateriaModalLabel">Editar Materia</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="@Url.Action("ModificarMateria", "Admin")" method="post">
+                                                <input type="hidden" name="id" value="@materia.Id_Materia">
+                                                <div class="form-group">
+                                                    <label for="nombreMateria-@materia.Id_Materia">Nombre de la Materia</label>
+                                                    <input type="text" class="form-control" id="nombreMateria-@materia.Id_Materia" name="nombre" value="@materia.Nombre" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="profesorMateria-@materia.Id_Materia">Asignar Profesor</label>
+                                                    <select class="form-control" id="profesorMateria-@materia.Id_Materia" name="profesorId">
+                                                        @if (ViewBag.Profesores != null)
+                                                        {
+                                                        foreach (var profesor in ViewBag.Profesores)
+                                                        {
+                                                            <option value="@profesor.Id_Usuario" @(profesor.Id_Usuario == profesorId ? "selected" : "")>@profesor.Nombre @profesor.Apellido @profesor.DNI</option>
+                                                        }
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="activoMateria-@materia.Id_Materia">Activo</label>
+                                                    <select class="form-control" id="activoMateria-@materia.Id_Materia" name="activo">
+                                                        <option value="True" @(activo == true ? "selected" : "")>Sí</option>
+                                                        <option value="False" @(activo == false ? "selected" : "")>No</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No hay materias disponibles.</p>
+                    }
+                    <!-- Botón para Agregar Materia -->
+                    <button class="add-button btn btn-primary" data-toggle="modal" data-target="#agregarModal">Agregar</button>
+
+                    <!-- Modal para Agregar Materia -->
+                    <div class="modal fade" id="agregarModal" tabindex="-1" role="dialog" aria-labelledby="agregarModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="agregarModalLabel">Agregar Materia</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="@Url.Action("AgregarMateria", "Admin")" method="post">
+                                        <div class="form-group">
+                                            <label for="nombreMateria">Nombre de la Materia</label>
+                                            <input type="text" class="form-control" id="nombreMateria" name="nombre" placeholder="Nombre de la Materia" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Agregar Materia</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <button id="addButton" class="add-button">Agregar</button>
+                }
+
+
+
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (dependencias de jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+        var materiaId = '@TempData["MateriaId"]';
+        if (materiaId) {
+            $('#verProfesoresModal-' + materiaId).modal('show'); // Abre la modal si hay un id válido
+            $('#modalProfesoresAsignados').modal('show'); // Abre la modal automáticamente
+        }
+
+        $('.close').click(function () {
+            $('.modal').modal('hide'); // Cierra cualquier modal cuando se presiona la "x"
+        });
+    });
+    </script>
+
 </body>
 </html>
-
-

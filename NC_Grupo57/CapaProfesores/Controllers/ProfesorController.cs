@@ -222,6 +222,12 @@ namespace CapaProfesores.Controllers
         [HttpPost]
         public ActionResult EditarNota(long Id_Usuario_Alumno, long Codigo_Comision, int? Id_Tipo_Nota, decimal Calificacion, string Observaciones)
         {
+            /*if (Calificacion == null)
+            {
+                TempData["Error"] = "Debe seleccionar un tipo de nota.";
+                return RedirectToAction("PrincipalProfesor");
+
+            }*/
             if (Id_Tipo_Nota == null)
             {
                 TempData["Error"] = "Debe seleccionar un tipo de nota.";

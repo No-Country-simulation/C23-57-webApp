@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CapaProfesores.Permisos;
 
 namespace CapaProfesores.Controllers
 {
@@ -13,7 +14,7 @@ namespace CapaProfesores.Controllers
         {
             return View();
         }
-
+        [PermisosRol(1)]
         public ActionResult PrincipalAdmin()
         {
             return View();

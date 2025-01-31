@@ -28,8 +28,20 @@ namespace CapaProfesores.Controllers
 
                 Usuario user = new UsuarioNegocio().buscarPorEmail(correo);
                 Session["Usuario"] = user;
-
-                return RedirectToAction("Index", "Home");
+                int idRol = user.Id_Rol;
+                switch (idRol)
+                {
+                    case 1:
+                        return RedirectToAction("PrincipalAdmin", "Admin");
+                    case 2:
+                        return RedirectToAction("PrincipalAlumno", "Alumno");
+                    case 3:
+                        return RedirectToAction("PrincipalProfesor", "Profesor");
+                    case 4:
+                        return RedirectToAction("PrincipalTutor", "Tutor");
+                    default:
+                        return RedirectToAction("login", "Home");
+                }                
             }
 
             return RedirectToAction("login", "Home");

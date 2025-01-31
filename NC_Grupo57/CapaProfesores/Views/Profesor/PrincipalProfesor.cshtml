@@ -5,14 +5,94 @@
     @Styles.Render("~/styles/StyPpalProfesor.css")
 }
 <!--
-    En este HTML era que de alguna forma aparezcan las materias que dicta el profesor, como en la de 
+    En este HTML era que de alguna forma aparezcan las materias que dicta el profesor, como en la de
     admin puede ser un desplegable, botones, solapas o lo que mejor les parezca y un listado el cual se
     va a llenar desde el back con el listado de alumnos que tiene en esa materia y cada fial debería tener
     un botón con un + o algo así ya que con ese botón vamos a hacer desde el back que el profesor pueda
     cargar notas a cada alumno. originalmente la idea
     era que cada profesor pueda generar eventos para calificar, como por ejemplo exámenes, trabajos prácticos
     y demás pero no creo que podamos llegar con los tiempso para poder hacerlo. Por lo que desde el back, en
-    principio vamos a hardcodear que son X cantidad de notas al año. 
+    principio vamos a hardcodear que son X cantidad de notas al año.
 -->
-<h2>PrincipalProfesor</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores - EDU Flow</title>
+    <link rel="stylesheet" href="styleprofesores.css">
+    <link rel="icon" href="../imagenes/faviicon5.png">
+</head>
+<body>
+    <header class="header">
+
+        <div class="logo"><img class="logo" src="../imagenes/logo2 1.png" alt="Logo"></div>
+        <nav class="header__nav">
+            <button class="nav-button" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Log out</button>
+        </nav>
+
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="sidebar-tab">Materias</button>
+            <button class="sidebar-tab active">Profesores</button>
+        </div>
+        <div class="content">
+            <div class="content-box">
+                <h2>Materias de Jorge García</h2>
+                <div class="materia">
+                    <div class="materia-header">
+                        <span>Matemática</span>
+                        <button class="delete-btn">&#x1F5D1;</button>
+                    </div>
+                    <table class="alumnos-table">
+                        <thead>
+                            <tr>
+                                <th>Alumno</th>
+                                <th>Cargar Nota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan Pérez</td>
+                                <td><button class="add-grade-btn">+</button></td>
+                            </tr>
+                            <tr>
+                                <td>María López</td>
+                                <td><button class="add-grade-btn">+</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="materia">
+                    <div class="materia-header">
+                        <span>Ciencias Naturales</span>
+                        <button class="delete-btn">&#x1F5D1;</button>
+                    </div>
+                    <table class="alumnos-table">
+                        <thead>
+                            <tr>
+                                <th>Alumno</th>
+                                <th>Cargar Nota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carlos Gómez</td>
+                                <td><button class="add-grade-btn">+</button></td>
+                            </tr>
+                            <tr>
+                                <td>Sofía Torres</td>
+                                <td><button class="add-grade-btn">+</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
 

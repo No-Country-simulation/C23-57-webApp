@@ -5,11 +5,49 @@
     @Styles.Render("~/styles/StyPpalAdmin.css")
 }
 <!--
-    En esta pag habíamos quedado que tenía que tener dos botones, desplegable, menú o lo que fuere para poder 
+    En esta pag habíamos quedado que tenía que tener dos botones, desplegable, menú o lo que fuere para poder
     elegir materias o profesores y un listado para que desde el back lo carguemos con materias o profesores
     según corresponda. Cada fila dijimos que, si se puede, tenga dos botones: uno para eliminar y otro para modificar.
     Fuera de la tabla tiene que haber un botón que diga agregar (Solo agregar, ya que dependiendo de la tabla que esté
     activada podemos programar desde el back para agregue un profesor o una materia)
 -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDU Flow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+
+        <div class="logo"><img class="logo" src="../imagenes/logo2 1.png" alt="Logo"></div>
+        <nav class="header__nav">
+            <button class="nav-button" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Log out</button>
+        </nav>
+
+    </header>
+    <div class="main-container">
+        <div class="sidebar">
+            <button class="sidebar-tab">Materias</button>
+            <button class="sidebar-tab active">Profesores</button>
+        </div>
+        <div class="content">
+            <div class="content-box">
+                <h2>Listado</h2>
+                <div class="materia">
+                    <div class="materia-header">
+                        <span>Matemática</span>
+                        <span class="rotated-pencil">&#x270F;</span>
+                        <button class="delete-btn">&#x1F5D1;</button>
+                    </div>
+                </div>
+                <button id="addButton" class="add-button">Agregar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
 

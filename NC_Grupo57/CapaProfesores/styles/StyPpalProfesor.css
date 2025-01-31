@@ -1,1 +1,156 @@
-﻿
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+.header {
+    max-width: 1440px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0 20px;
+    height: 80px;
+}
+
+.logo {
+    width: auto;
+    display: block;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-button {
+    background-color: #f36c21;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+    .nav-button:hover {
+        background-color: #e65b1b;
+    }
+
+/* Layout styles */
+.main-container {
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.sidebar-tab {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px;
+}
+
+    .sidebar-tab:hover {
+        background-color: #d6d6d6;
+    }
+
+    .sidebar-tab.active {
+        background-color: #f36c21;
+        color: #ffffff;
+    }
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.content-box {
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.materia {
+    margin-bottom: 20px;
+}
+
+.materia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.alumnos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+
+    .alumnos-table th, .alumnos-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+.add-grade-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .add-grade-btn:hover {
+        background-color: #45a049;
+    }
+
+.alumnos-table th:first-child,
+.alumnos-table td:first-child {
+    width: 70%;
+}
+
+.alumnos-table th:last-child,
+.alumnos-table td:last-child {
+    width: 30%;
+}

@@ -9,13 +9,39 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    
-   
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - EduFlow</p>
+        <footer class="bg-dark text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <!-- Columna de información de contacto -->
+                    <div class="col-md-4 mb-3">
+                        <h5>Contacto</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="mailto:contacto@tudominio.com" class="text-white">contacto@tudominio.com</a></li>
+                            <li><a href="tel:+123456789" class="text-white">+1 234 567 89</a></li>
+                            <li><a href="https://www.tudominio.com" class="text-white" target="_blank">www.tudominio.com</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna de redes sociales -->
+                    <div class="col-md-4 mb-3">
+                        <h5>Redes sociales</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="https://facebook.com" class="text-white" target="_blank">Facebook</a></li>
+                            <li><a href="https://twitter.com" class="text-white" target="_blank">Twitter</a></li>
+                            <li><a href="https://instagram.com" class="text-white" target="_blank">Instagram</a></li>
+                            <li><a href="https://linkedin.com" class="text-white" target="_blank">LinkedIn</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna de derechos de autor -->
+                    <div class="col-md-4 text-center text-md-right">
+                        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
@@ -23,4 +49,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
+
 </html>

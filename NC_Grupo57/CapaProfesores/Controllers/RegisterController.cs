@@ -10,43 +10,57 @@ namespace CapaProfesores.Controllers
 {
     public class RegisterController : Controller
     {
-        private Usuario usuario;
         private UsuarioNegocio negoUsu;
-        private Rol rol;
         private RolNegocio negoRol;
-        // GET: Register
-        public ActionResult Index()
+
+        public RegisterController()
         {
+            negoUsu = new UsuarioNegocio();
+            negoRol = new RolNegocio();
+        }
+
+        // GET: Register
+        public ActionResult RegistroTutor()
+        {
+            List<Rol> roles = negoRol.obtenerTodosLosRoles();
+            ViewBag.Roles = roles ?? new List<Rol>(); // Asignamos los roles al ViewBag
             return View();
         }
 
-        public ActionResult ResgistroTutor(string txtNombre, string txtApellido, string txtTel, string txtDni, DateTime txtNacmiento, string typeofuser)
+        [HttpPost]
+        public ActionResult RegistroTutor(string txtNombre, string txtApellido, string txtTel, string txtDni, DateTime txtNacimiento, string typeofuser, string txtMail, string txtPass1, string txtPass2)
         {
-            negoRol = new RolNegocio();
-            List<Rol> roles = negoRol.obtenerTodosLosRoles();
-
-            if (roles == null || !roles.Any())
+            if (txtPass1 != txtPass2)
             {
-                roles = new List<Rol>(); // Si está nula, inicializamos una lista vacía
+                TempData["ErrorMessage"] = "Las contraseñas no coinciden.";
+                return RedirectToAction("RegistroTutor", "Home");
             }
 
-            ViewBag.Roles = roles; // Asignamos la lista al ViewBag
-            
-            rol = new Rol();
-            
-            
-            usuario = new Usuario();
-            usuario.Nombre = txtNombre;
-            usuario.Apellido = txtApellido;
-            usuario.Telefono = txtTel;
-            usuario.DNI = txtDni;
-            usuario.Id_Rol = 1;  
-            usuario.Fecha_Nacimiento = txtNacmiento;
-            usuario.Fecha_Alta = DateTime.Now;
-            usuario.Activo = false;
+            Usuario usuario = new Usuario
+            {
+                Nombre = txtNombre,
+                Apellido = txtApellido,
+                Telefono = txtTel,
+                DNI = txtDni,
+                Id_Rol = int.Parse(typeofuser),
+                Fecha_Nacimiento = txtNacimiento,
+                Email = txtMail,
+                Contrasenia = txtPass1, 
+                Fecha_Alta = DateTime.Now,
+                Activo = true
+            };
 
+            try
+            {
+                negoUsu.agregarUsuario(usuario);
+                TempData["SuccessMessage"] = "Usuario registrado con éxito.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Error al registrar usuario: " + ex.Message;
+            }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

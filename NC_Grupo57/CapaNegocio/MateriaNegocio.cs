@@ -1,6 +1,7 @@
 ﻿using CapaDominio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -160,5 +161,177 @@ namespace CapaNegocio
 
             return materia;
         }
+        //PRUEBA
+        public List<MateriaProfesor> obtenerDatosDeMateriasxProfesor(int idProfesor)
+        {
+            List<MateriaProfesor> listaUsuarios = new List<MateriaProfesor>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.settearConsulta("SELECT Id_Usuario_Profesor, Id_Materia, Codigo_Comision, Activo FROM Materias_x_Profesor WHERE Id_Usuario_Profesor = @IdProfesor");
+                datos.setearParametro("@IdProfesor", idProfesor);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+
+                    MateriaProfesor usuario = new MateriaProfesor
+                    {
+                        Id_Usuario_Profesor = Convert.ToInt64(datos.Lector["Id_Usuario_Profesor"]),
+                        Id_Materia = Convert.ToInt32(datos.Lector["Id_Materia"]),
+                        Codigo_Comision = Convert.ToInt64(datos.Lector["Codigo_Comision"]),
+                        Activo = Convert.ToBoolean(datos.Lector["Activo"])
+                    };
+
+                    listaUsuarios.Add(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            /*if (listaUsuarios.Count == 0)
+            {
+                return null;
+            }*/
+
+            return listaUsuarios;
+        }
+        public List<Usuario> ObtenerAlumnosPorMateria(int idMateria, long codigoComision)
+        {
+            List<Usuario> alumnos = new List<Usuario>();
+
+            AccesoDatos datos = new AccesoDatos();
+            {
+                datos.settearConsulta(@"
+            SELECT u.Id_Usuario AS Id_Alumno, u.Nombre, u.Apellido, u.DNI, u.Activo
+            FROM Materias_x_Alumno mxa
+            JOIN Usuarios u ON mxa.Id_Usuario_Alumno = u.Id_Usuario
+            JOIN Materias_x_Profesor mxp ON mxa.Codigo_Comision = mxp.Codigo_Comision
+            WHERE mxp.Id_Materia = @IdMateria 
+            AND mxp.Codigo_Comision = @CodigoComision");
+
+                datos.setearParametro("@IdMateria", idMateria);
+                datos.setearParametro("@CodigoComision", codigoComision);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    alumnos.Add(new Usuario
+                    {
+                        Id_Usuario = Convert.ToInt64(datos.Lector["Id_Alumno"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        DNI = datos.Lector["DNI"].ToString(),
+                        Activo = (bool)datos.Lector["Activo"]
+                    });
+                }
+            }
+            return alumnos;
+        }
+        public List<Usuario> ObtenerAlumnosPorMateria(int idMateria)
+        {
+            List<Usuario> alumnos = new List<Usuario>();
+
+            AccesoDatos datos = new AccesoDatos();
+            {
+                datos.settearConsulta(@"SELECT u.Id_Usuario, u.Nombre, u.Apellido, u.DNI, u.Activo
+                         FROM Usuarios u 
+                         INNER JOIN Materias_x_Alumno am ON u.Id_Usuario = am.Id_Usuario_Alumno
+                         WHERE u.Activo = 1 AND am.Activo = 1");
+
+
+                datos.setearParametro("@IdMateria", idMateria);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    alumnos.Add(new Usuario
+                    {
+                        Id_Usuario = Convert.ToInt64(datos.Lector["Id_Usuario"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        DNI = datos.Lector["DNI"].ToString(),
+                        Activo = (bool)datos.Lector["Activo"]
+                    });
+                }
+            }
+            /*if (alumnos.Count() == 0)
+            {
+                return null;
+            }*/
+
+            return alumnos;
+        }
+
+        public List<MateriaProfesor> ObtenerCodigosComisionPorMateria(string nombreComision)
+        {
+            List<MateriaProfesor> alumnos = new List<MateriaProfesor>();
+
+            AccesoDatos datos = new AccesoDatos();
+            {
+                datos.settearConsulta(@"
+            SELECT mxp.Codigo_Comision
+            FROM Materias_x_Profesor mxp
+            INNER JOIN Materias m ON mxp.Id_Materia = m.Id_Materia
+            WHERE m.Nombre = @nombreComision;");
+
+                datos.setearParametro("@nombreComision", nombreComision);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    alumnos.Add(new MateriaProfesor
+                    {
+                        Codigo_Comision = (long)datos.Lector["Codigo_Comision"]
+                    });
+                }
+            }
+            return alumnos;
+        }
+
+        public List<Materia> ObtenerMateriasPorProfesor(long idProfesor)
+        {
+            List<Materia> materias = new List<Materia>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.settearConsulta(@"SELECT m.Id_Materia, m.Nombre, m.Activo
+                                    FROM Materias m
+                                    INNER JOIN Materias_x_Profesor mp ON m.Id_Materia = mp.Id_Materia
+                                    WHERE mp.Id_Usuario_Profesor = @IdProfesor AND m.Activo = 1");
+
+                datos.setearParametro("@IdProfesor", idProfesor);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    materias.Add(new Materia
+                    {
+                        Id_Materia = Convert.ToInt32(datos.Lector["Id_Materia"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Activo = (bool)datos.Lector["Activo"]
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return materias;
+        }
+
+        
     }
 }

@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: red;
 }
 
 .header {
@@ -45,13 +45,14 @@
 }
 
     .nav-button:hover {
-        background-color: #e65b1b;
+        background-color: #F2EFEB;
     }
 
 /* Layout styles */
 .main-container {
     display: flex;
     height: calc(100vh - 80px);
+    background-color: #00584F;
 }
 
 .sidebar {
@@ -71,7 +72,7 @@
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    border-radius: 8px;
+    border-radius: 0px;
 }
 
     .sidebar-tab:hover {
@@ -79,8 +80,8 @@
     }
 
     .sidebar-tab.active {
-        background-color: #f36c21;
-        color: #ffffff;
+        background-color: #F2EFEB;
+        color: black;
     }
 
 .content {
@@ -106,20 +107,30 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    
 }
 .edit-btn, .delete-btn, .view-btn {
-    margin-left: 0; 
+    margin-left: 0;
     padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 .materia-header {
     display: flex;
     justify-content: space-between;
+    justify-items:center;
     align-items: center;
+    align-content:center;
     background-color: #f0f0f0;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    height:auto;
 }
+    .materia-header span {
+        display: inline-block;
+    }
 
 .delete-btn {
     background-color: #dc3545;

@@ -1,7 +1,7 @@
 ﻿@model List<CapaDominio.Materia>
 @{
     ViewBag.Title = "PrincipalProfesor";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
     var alumnosPorMateria = ViewBag.AlumnosPorMateria as Dictionary<int, List<CapaDominio.Usuario>>;
     var materiasProfesor = ViewBag.MateriasProfesor as List<CapaDominio.MateriaProfesor>;
     var tiposNota = ViewBag.TiposNota as List<CapaDominio.TipoNota>;

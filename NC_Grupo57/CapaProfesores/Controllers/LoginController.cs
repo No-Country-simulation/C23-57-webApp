@@ -43,8 +43,13 @@ namespace CapaProfesores.Controllers
                         return RedirectToAction("login", "Home");
                 }                
             }
+            else
+            {
+                ViewBag.Error = "Error de credenciales";
+                
+                return RedirectToAction("login", "Home");
+            }
 
-            return RedirectToAction("login", "Home");
 
         }
         

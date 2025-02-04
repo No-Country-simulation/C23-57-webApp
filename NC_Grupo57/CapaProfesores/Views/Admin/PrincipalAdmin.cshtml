@@ -1,33 +1,27 @@
 ﻿@{
     ViewBag.Title = "PrincipalAdmin";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    Layout = null;
     @Styles.Render("~/styles/StyPpalAdmin.css")
+    <title>@ViewBag.Title</title>
+}
 
-</head>
 @{
     var materias = ViewBag.Materias as IEnumerable<dynamic>;
     //var profesoresAsignados = ViewBag.ProfesoresAsignados;
 }
-<body>
-    <header class="header">
+    <header class="header" style="background-color: #F2EFEB; border-color: #00584F; border: 5px; ">
         <div class="logo"><img class="logo" src="../imagenes/logo2 1.png" alt="Logo"></div>
-        <nav class="header__nav">
-            <button class="nav-button" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Cerrar Sesión</button>
+        <nav class="header__nav"  >
+            <button class="nav-button btn btn-danger" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Cerrar Sesión</button>
         </nav>
     </header>
+   
+<body style="background-color: #F2EFEB;">
 
-    <div class="main-container">
-        <div class="sidebar">
+    <div class="main-container" >
+        <div class="sidebar" style="background-color: #00584F; ">
             <form action="@Url.Action("PrincipalAdmin", "Admin")" method="post">
-                <input type="hidden" name="vista" value="Materias">
+                <input style="margin:5px;" type="hidden" name="vista" value="Materias">
                 <button class="sidebar-tab @(ViewBag.VistaActual == "Materias" ? "active" : "")" type="submit">Materias</button>
             </form>
             <form action="@Url.Action("PrincipalAdmin", "Admin")" method="post">
@@ -35,7 +29,7 @@
                 <button class="sidebar-tab @(ViewBag.VistaActual == "Profesores" ? "active" : "")" type="submit">Profesores</button>
             </form>
         </div>
-        <div class="content">
+        <div class="content" style="background-color: #F2EFEB;">
             <div class="content-box">
                 <h2>Listado</h2>
 
@@ -62,7 +56,7 @@
                                         <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarProfesorModal-@profesor.Id_Usuario">&#x270F;</button>
                                         <form action="@Url.Action("EliminarProfesor", "Admin")" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="@profesor.Id_Usuario">
-                                            <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                            <button style="display:inline; class="delete-btn btn" type="submit">&#x1F5D1;</button>
                                         </form>
                                     </div>
                                 </div>
@@ -150,7 +144,13 @@
                                 <div class="materia-header">
                                     <span>@materia.Nombre</span>
                                     <div class="action-buttons">
-                                        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                        
+                                      
+
+                                            <button style="display:inline;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                    
+
+
                                         <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="@materia.Id_Materia">
                                             <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
@@ -325,4 +325,3 @@
     </script>
 
 </body>
-</html>

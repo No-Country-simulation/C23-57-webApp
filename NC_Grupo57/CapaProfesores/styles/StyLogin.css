@@ -1,3 +1,7 @@
 ﻿body {
     background-color: #00584F;
 }
+
+.form-control {
+    width: 100% !important;
+}

@@ -6,7 +6,7 @@
 
 <body>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100">
+<div class=" custom-container d-flex justify-content-center align-items-center min-vh-100">
 
 <div class="justify-content-center form-container ">
     <form class="form" action="@Url.Action("RegistroTutor", "Register")" method="post">
@@ -64,6 +64,9 @@
         </div>
     </form>
 
+</div>
+
+</div>
     @if (TempData["SuccessMessage"] != null)
     {
         <div class="alert alert-success mt-3">
@@ -76,8 +79,5 @@
             @TempData["ErrorMessage"]
         </div>
     }
-</div>
-
-</div>
 
 </body>

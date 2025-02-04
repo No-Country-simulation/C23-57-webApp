@@ -9,13 +9,14 @@
     var materias = ViewBag.Materias as IEnumerable<dynamic>;
     //var profesoresAsignados = ViewBag.ProfesoresAsignados;
 }
-    <header class="header" style="color: #F2EFEB">
+    <header class="header" style="background-color: #F2EFEB; border-color: #00584F; border: 5px; ">
         <div class="logo"><img class="logo" src="../imagenes/logo2 1.png" alt="Logo"></div>
-        <nav class="header__nav">
+        <nav class="header__nav"  >
             <button class="nav-button btn btn-danger" onclick="location.href='@Url.Action("CerrarSesion", "Login")'">Cerrar Sesión</button>
         </nav>
     </header>
-<body style="background-color: #00584F;">
+   
+<body style="background-color: #F2EFEB;">
 
     <div class="main-container" >
         <div class="sidebar" style="background-color: #00584F; ">
@@ -143,7 +144,13 @@
                                 <div class="materia-header">
                                     <span>@materia.Nombre</span>
                                     <div class="action-buttons">
-                                        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                        
+                                      
+
+                                            <button style="display:inline;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                    
+
+
                                         <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="@materia.Id_Materia">
                                             <button class="delete-btn btn" type="submit">&#x1F5D1;</button>

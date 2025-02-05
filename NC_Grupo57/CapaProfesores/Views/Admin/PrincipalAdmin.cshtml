@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "PrincipalAdmin";
+    ViewBag.Title = "Pánel Administrador";
     Layout = null;
     @Styles.Render("~/styles/StyPpalAdmin.css")
     <title>@ViewBag.Title</title>
@@ -54,13 +54,13 @@
                         foreach (var profesor in ViewBag.Profesores)
                         {
                             <div class="materia">
-                                <div class="materia-header">
+                                <div class="materia-header d-flex">
                                     <span>@profesor.Nombre @profesor.Apellido @profesor.DNI</span>
                                     <div class="action-buttons">
                                         <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarProfesorModal-@profesor.Id_Usuario">&#x270F;</button>
-                                        <form action="@Url.Action("EliminarProfesor", "Admin")" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" value="@profesor.Id_Usuario">
-                                            <button style="display:inline;" class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                        <form action="@Url.Action("EliminarProfesor", "Admin")" method="post" style="margin:2px">
+                                            <input style="display: inline; margin: 2px;" type="hidden" name="id" value="@profesor.Id_Usuario">
+                                            <button style="display: inline; margin: 2px;" class="delete-btn btn" type="submit">&#x1F5D1;</button>
                                         </form>
                                     </div>
                                 </div>
@@ -149,21 +149,18 @@
                                     <span>@materia.Nombre</span>
                                     <div class="action-buttons">
 
-
-
-                                        <button style="display:inline;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
-
-
-
-                                        <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" value="@materia.Id_Materia">
-                                            <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
-                                        </form>
+                                        <div class="d-flex">
+                                            <button style="display:inline; margin:2px;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+                                            <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="margin:2px" >
+                                                <input type="hidden" name="id" value="@materia.Id_Materia">
+                                                <button class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                            </form>
                                         <!-- Nuevo botón con ícono de ojo -->
-                                        <form action="@Url.Action("VerProfesoresAsignados", "Admin")" method="post" style="display:inline;">
-                                            <input type="hidden" name="idMateria" value="@materia.Id_Materia">
-                                            <button class="view-btn btn btn-info" type="submit">&#x1F441;</button>
-                                        </form>
+                                            <form action="@Url.Action("VerProfesoresAsignados", "Admin")" method="post" style="margin:2px">
+                                                <input  type="hidden" name="idMateria" value="@materia.Id_Materia">
+                                                <button class="view-btn btn btn-info" type="submit">&#x1F441;</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -320,9 +317,9 @@
                             <div class="materia">
                                 <div class="materia-header">
                                     <span>@alumno.Nombre @alumno.Apellido @alumno.DNI</span>
-                                    <div class="action-buttons">
+                                    <div class="action-buttons d-flex">
                                         <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarAlumnoModal-@alumno.Id_Usuario">&#x270F;</button>
-                                        <form action="@Url.Action("EliminarAlumno", "Admin")" method="post" style="display:inline;">
+                                        <form action="@Url.Action("EliminarAlumno", "Admin")" method="post" style="margin:2px;">
                                             <input type="hidden" name="id" value="@alumno.Id_Usuario">
                                             <button style="display:inline;" class="delete-btn btn" type="submit">&#x1F5D1;</button>
                                         </form>

@@ -1,6 +1,6 @@
 ﻿@model List<CapaDominio.Materia>
 @{
-    ViewBag.Title = "PrincipalProfesor";
+    ViewBag.Title = "EDUFLOW - Panel Docente";
     Layout = null;
     var alumnosPorMateria = ViewBag.AlumnosPorMateria as Dictionary<int, List<CapaDominio.Usuario>>;
     var materiasProfesor = ViewBag.MateriasProfesor as List<CapaDominio.MateriaProfesor>;
@@ -66,10 +66,10 @@
 
                                     foreach (var alumno in alumnosPorMateria[materia.Id_Materia])
                                     {
-                                        <tr>
+                                        <tr >
                                             <td>@alumno.Nombre @alumno.Apellido (@alumno.DNI)</td>
                                             <td>
-                                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCargarNota_@alumno.Id_Usuario@materia.Id_Materia">+</button>
+                                                <button style="display:inline; margin:2px;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCargarNota_@alumno.Id_Usuario@materia.Id_Materia">+</button>
                                             </td>
                                             <td>
                                                 @using (Html.BeginForm("VerNotasAlumno", "Profesor", FormMethod.Post))
@@ -78,7 +78,7 @@
                                                     @Html.Hidden("Codigo_Comision", codigoComision)
                                                     @Html.Hidden("idMateria", materia.Id_Materia)
 
-                                                    <button type="submit" class="btn btn-info">
+                                                    <button style="display:inline; margin:2px;" type="submit" class="btn btn-info">
                                                         <i class="bi bi-eye"></i>
                                                     </button>
 
@@ -107,7 +107,7 @@
 
                                                             <div class="mb-3">
                                                                 <label class="form-label">Calificación</label>
-                                                                <input type="number" name="Calificacion" class="form-control" step="0.01" min="0" max="10" required>
+                                                                <input type="number" name="Calificacion" class="form-control" step="1" min="0" max="10" required>
                                                             </div>
 
                                                             <div class="mb-3">

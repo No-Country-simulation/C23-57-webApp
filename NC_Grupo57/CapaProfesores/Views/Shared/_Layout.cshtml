@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Home</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -21,10 +21,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a id="linkNavBar" class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a id="linkNavBar" class="nav-link active" aria-current="page" href="@Url.Action("Index", "Home")#ppal">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a id="linkNavBar" class="nav-link active" href="@Url.Action("About")">Sobre nosotros</a>
+                        <a id="linkNavBar" class="nav-link active" href="@Url.Action("Index", "Home")#about">Sobre nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-info nav-link" href="@Url.Action("Login")">Ingresar</a>
@@ -37,15 +37,15 @@
         @RenderBody()
         <hr />
         <footer class="bg-dark text-white py-4">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <!-- Columna de información de contacto -->
                     <div class="col-md-4 mb-3">
                         <h5>Contacto</h5>
                         <ul class="list-unstyled">
-                            <li><a href="mailto:contacto@tudominio.com" class="text-white">contacto@tudominio.com</a></li>
+                            <li><a href="mailto:contacto@tudominio.com" class="text-white">info@eduflow.com</a></li>
                             <li><a href="tel:+123456789" class="text-white">+1 234 567 89</a></li>
-                            <li><a href="https://www.tudominio.com" class="text-white" target="_blank">www.tudominio.com</a></li>
+                            <li><a href="https://www.tudominio.com" class="text-white" target="_blank">www.eduflow.com</a></li>
                         </ul>
                     </div>
 
@@ -62,7 +62,7 @@
 
                     <!-- Columna de derechos de autor -->
                     <div class="col-md-4 text-center text-md-right">
-                        <p>&copy; 2025 Tu Empresa. Todos los derechos reservados.</p>
+                        <p>&copy; 2025 Eduflow. Todos los derechos reservados.</p>
                     </div>
                 </div>
             </div>

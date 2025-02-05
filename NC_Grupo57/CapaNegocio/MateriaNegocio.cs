@@ -214,7 +214,7 @@ namespace CapaNegocio
             JOIN Usuarios u ON mxa.Id_Usuario_Alumno = u.Id_Usuario
             JOIN Materias_x_Profesor mxp ON mxa.Codigo_Comision = mxp.Codigo_Comision
             WHERE mxp.Id_Materia = @IdMateria 
-            AND mxp.Codigo_Comision = @CodigoComision");
+            AND mxp.Codigo_Comision = @CodigoComision AND u.Activo = 1");
 
                 datos.setearParametro("@IdMateria", idMateria);
                 datos.setearParametro("@CodigoComision", codigoComision);

@@ -432,6 +432,29 @@ namespace CapaNegocio
             }
         }
 
+        public void modificarAlumno(int id, string nombre, string apellido, string email, string activo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.settearConsulta("UPDATE Usuarios SET Nombre = @Nombre, Apellido = @Apellido, Email = @Email, Activo = @Activo WHERE Id_Usuario = @Id");
+                datos.setearParametro("@Id", id);
+                datos.setearParametro("@Nombre", nombre);
+                datos.setearParametro("@Apellido", apellido);
+                datos.setearParametro("@Email", email);
+                datos.setearParametro("@Activo", activo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
         public bool EliminarMateria(int id)
         {
@@ -524,6 +547,56 @@ namespace CapaNegocio
             }
             return profesores;
         }
+        public List<Usuario> ObtenerAlumnos(string filtro)
+        {
+            List<Usuario> alumnos = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "SELECT Id_Usuario, Nombre, Apellido, Email, Activo, DNI FROM Usuarios WHERE Id_Rol = 2";
+
+                if (filtro == "Activos")
+                {
+                    consulta += " AND Activo = 1";
+                }
+                else if (filtro == "Inactivos")
+                {
+                    consulta += " AND Activo = 0";
+                }
+                // No se agrega ningún filtro adicional para 'Todos'
+
+                datos.settearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario alumno = new Usuario
+                    {
+                        Id_Usuario = Convert.ToInt32(datos.Lector["Id_Usuario"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        Email = datos.Lector["Email"].ToString(),
+                        Activo = Convert.ToBoolean(datos.Lector["Activo"]),
+                        DNI = datos.Lector["DNI"].ToString()
+                    };
+                    alumnos.Add(alumno);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            if (alumnos.Count == 0)
+            {
+                return null;
+            }
+            return alumnos;
+        }
 
         public bool eliminarProfesorxMateria(int idProfesor, int idMateria)
         {
@@ -580,6 +653,57 @@ namespace CapaNegocio
             {
                 return false;
                 //throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return true;
+        }
+        public bool EliminarAlumno(int id)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Eliminar las relaciones de la materia en la tabla Materias_x_Alumno
+                datos.settearConsulta("DELETE FROM Materias_x_Alumno WHERE Id_Usuario_Alumno = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            datos = new AccesoDatos();
+            try
+            {
+                datos.settearConsulta("DELETE FROM Notas WHERE Id_Usuario_Alumno = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            try
+            {
+                datos.settearConsulta("DELETE FROM Usuarios WHERE Id_Usuario = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                return false;
             }
             finally
             {

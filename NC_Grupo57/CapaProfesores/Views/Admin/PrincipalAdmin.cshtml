@@ -28,6 +28,10 @@
                 <input type="hidden" name="vista" value="Profesores">
                 <button class="sidebar-tab @(ViewBag.VistaActual == "Profesores" ? "active" : "")" type="submit">Profesores</button>
             </form>
+            <form action="@Url.Action("PrincipalAdmin", "Admin")" method="post">
+                <input type="hidden" name="vista" value="Alumnos">
+                <button class="sidebar-tab @(ViewBag.VistaActual == "Alumnos" ? "active" : "")" type="submit">Alumnos</button>
+            </form>
         </div>
         <div class="content" style="background-color: #F2EFEB;">
             <div class="content-box">
@@ -56,7 +60,7 @@
                                         <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarProfesorModal-@profesor.Id_Usuario">&#x270F;</button>
                                         <form action="@Url.Action("EliminarProfesor", "Admin")" method="post" style="display:inline;">
                                             <input type="hidden" name="id" value="@profesor.Id_Usuario">
-                                            <button style="display:inline; class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                            <button style="display:inline;" class="delete-btn btn" type="submit">&#x1F5D1;</button>
                                         </form>
                                     </div>
                                 </div>
@@ -144,11 +148,11 @@
                                 <div class="materia-header">
                                     <span>@materia.Nombre</span>
                                     <div class="action-buttons">
-                                        
-                                      
 
-                                            <button style="display:inline;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
-                                    
+
+
+                                        <button style="display:inline;" class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#editarMateriaModal-@materia.Id_Materia">&#x270F;</button>
+
 
 
                                         <form action="@Url.Action("EliminarMateria", "Admin")" method="post" style="display:inline;">
@@ -245,10 +249,10 @@
                                                     <select class="form-control" id="profesorMateria-@materia.Id_Materia" name="profesorId">
                                                         @if (ViewBag.Profesores != null)
                                                         {
-                                                        foreach (var profesor in ViewBag.Profesores)
-                                                        {
-                                                            <option value="@profesor.Id_Usuario" @(profesor.Id_Usuario == profesorId ? "selected" : "")>@profesor.Nombre @profesor.Apellido @profesor.DNI</option>
-                                                        }
+                                                            foreach (var profesor in ViewBag.Profesores)
+                                                            {
+                                                                <option value="@profesor.Id_Usuario" @(profesor.Id_Usuario == profesorId ? "selected" : "")>@profesor.Nombre @profesor.Apellido @profesor.DNI</option>
+                                                            }
                                                         }
                                                     </select>
                                                 </div>
@@ -297,6 +301,85 @@
                         </div>
                     </div>
                 }
+                else if (ViewBag.VistaActual == "Alumnos")
+                {
+                    <!-- Formulario para filtrar alumnos -->
+                    <form action="@Url.Action("FiltrarAlumnos", "Admin")" method="post">
+                        <select name="filtro" onchange="this.form.submit()">
+                            <option value="Todos" @(ViewBag.Filtro == "Todos" ? "selected" : "")>Todos</option>
+                            <option value="Activos" @(ViewBag.Filtro == "Activos" ? "selected" : "")>Activos</option>
+                            <option value="Inactivos" @(ViewBag.Filtro == "Inactivos" ? "selected" : "")>Inactivos</option>
+                        </select>
+                    </form>
+                    <hr />
+
+                    if (ViewBag.Alumnos != null)
+                    {
+                        foreach (var alumno in ViewBag.Alumnos)
+                        {
+                            <div class="materia">
+                                <div class="materia-header">
+                                    <span>@alumno.Nombre @alumno.Apellido @alumno.DNI</span>
+                                    <div class="action-buttons">
+                                        <button class="edit-btn btn btn-secondary" data-toggle="modal" data-target="#modificarAlumnoModal-@alumno.Id_Usuario">&#x270F;</button>
+                                        <form action="@Url.Action("EliminarAlumno", "Admin")" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@alumno.Id_Usuario">
+                                            <button style="display:inline;" class="delete-btn btn" type="submit">&#x1F5D1;</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal para Modificar Alumno -->
+                            <div class="modal fade" id="modificarAlumnoModal-@alumno.Id_Usuario" tabindex="-1" role="dialog" aria-labelledby="modificarAlumnoModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modificarAlumnoModalLabel">Modificar Alumno</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="@Url.Action("ModificarAlumno", "Admin")" method="post">
+                                                <input type="hidden" name="id" value="@alumno.Id_Usuario">
+                                                <div class="form-group">
+                                                    <label for="nombreAlumno-@alumno.Id_Usuario">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombreAlumno-@alumno.Id_Usuario" name="nombre" value="@alumno.Nombre" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="apellidoAlumno-@alumno.Id_Usuario">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellidoAlumno-@alumno.Id_Usuario" name="apellido" value="@alumno.Apellido" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dniAlumno-@alumno.Id_Usuario">DNI</label>
+                                                    <input type="text" class="form-control" id="dniAlumno-@alumno.Id_Usuario" name="dni" value="@alumno.DNI" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="emailAlumno-@alumno.Id_Usuario">Email</label>
+                                                    <input type="email" class="form-control" id="emailAlumno-@alumno.Id_Usuario" name="email" value="@alumno.Email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="activoAlumno-@alumno.Id_Usuario">Activo</label>
+                                                    <select class="form-control" id="activoAlumno-@alumno.Id_Usuario" name="activo">
+                                                        <option value="True" @(alumno.Activo ? "selected" : "")>Sí</option>
+                                                        <option value="False" @(!alumno.Activo ? "selected" : "")>No</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Modificar Alumno</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>No hay alumnos disponibles.</p>
+                    }
+                }
+
 
 
 

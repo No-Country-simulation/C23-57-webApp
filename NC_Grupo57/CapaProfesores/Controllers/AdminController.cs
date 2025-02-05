@@ -29,7 +29,7 @@ namespace CapaProfesores.Controllers
                 ViewBag.Profesores = profesores;
                 ViewBag.VistaActual = "Profesores";
             }
-            else
+            else if (vista == "Materias")
             {
                 var materias = materia.obtenerTodasLasMaterias(); 
                 
@@ -40,8 +40,14 @@ namespace CapaProfesores.Controllers
                 ViewBag.Profesores = profesoresActivos;
                 ViewBag.VistaActual = "Materias";
             }
+            else if (vista == "Alumnos")
+            {
+                var alumnos = user.ObtenerAlumnos(filtro);
+                ViewBag.Alumnos = alumnos;
+                ViewBag.VistaActual = "Alumnos";
+            }
 
-            return View();
+                return View();
         }
 
         [HttpPost]
@@ -80,6 +86,15 @@ namespace CapaProfesores.Controllers
             }
             return RedirectToAction("PrincipalAdmin", new { vista = "Profesores" });
         }
+        [HttpPost]
+        public ActionResult EliminarAlumno(int id)
+        {
+            if (user.EliminarAlumno(id))
+            {
+                return RedirectToAction("PrincipalAdmin", new { vista = "Alumnos" });
+            }
+            return RedirectToAction("PrincipalAdmin", new { vista = "Alumnos" });
+        }
 
         [HttpPost]
         public ActionResult ModificarMateria(int id, string profesorId, bool activo, string nombre)
@@ -106,6 +121,13 @@ namespace CapaProfesores.Controllers
         }
 
         [HttpPost]
+        public ActionResult ModificarAlumno(int id, string nombre, string apellido, string email, bool activo)
+        {
+            user.modificarAlumno(id, nombre, apellido, email, activo.ToString());
+            return RedirectToAction("PrincipalAdmin", new { vista = "Alumnos" });
+        }
+
+        [HttpPost]
         public ActionResult FiltrarProfesores(string filtro)
         {
             ViewBag.VistaActual = "Profesores";
@@ -114,8 +136,17 @@ namespace CapaProfesores.Controllers
             ViewBag.Filtro = filtro;  
             return View("PrincipalAdmin");
         }
+        [HttpPost]
+        public ActionResult FiltrarAlumnos(string filtro)
+        {
+            ViewBag.VistaActual = "Alumnos";
+            List<Usuario> alumnos = user.ObtenerAlumnos(filtro);
+            ViewBag.Alumnos = alumnos;
+            ViewBag.Filtro = filtro;
+            return View("PrincipalAdmin");
+        }
 
-        
+
         [HttpPost]
         public ActionResult VerProfesoresAsignados(int idMateria)
         {

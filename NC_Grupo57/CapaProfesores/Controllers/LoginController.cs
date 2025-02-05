@@ -34,11 +34,11 @@ namespace CapaProfesores.Controllers
                     case 1:
                         return RedirectToAction("PrincipalAdmin", "Admin");
                     case 2:
-                        return RedirectToAction("PrincipalAlumno", "Alumno");
+                        return RedirectToAction("PrincipalProfesor", "Profesor"); //Deberia redireccionar a la vista del panel de Alumno
                     case 3:
                         return RedirectToAction("PrincipalProfesor", "Profesor");
                     case 4:
-                        return RedirectToAction("PrincipalTutor", "Tutor");
+                        return RedirectToAction("PrincipalProfesor", "Profesor");  //Deberia redireccionar a la vista del panel de Tutor
                     default:
                         return RedirectToAction("login", "Home");
                 }                

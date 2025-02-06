@@ -49,7 +49,16 @@
 
                 <div class="card mb-3">
                     <div class="card-header" style="background-color: #00584F;">
-                        <strong>@materia.Nombre</strong> 
+                        <strong>@materia.Nombre</strong>
+                        <div class="float-end">
+                            <button class="btn btn-primary me-2" onclick="cargarAlumnosDisponibles(@materia.Id_Materia)">
+                                Agregar Alumno
+                            </button>
+                            <button class="btn btn-danger" onclick="cargarAlumnosMateria(@materia.Id_Materia)">
+                                Eliminar Alumno
+                            </button>
+                        </div>
+
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -66,7 +75,7 @@
 
                                     foreach (var alumno in alumnosPorMateria[materia.Id_Materia])
                                     {
-                                        <tr >
+                                        <tr>
                                             <td>@alumno.Nombre @alumno.Apellido (@alumno.DNI)</td>
                                             <td>
                                                 <button style="display:inline; margin:2px;" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCargarNota_@alumno.Id_Usuario@materia.Id_Materia">+</button>
@@ -130,7 +139,7 @@
                                 else
                                 {
                                     <tr>
-                                        <td colspan="3">No hay alumnos inscritos en esta materia.</td>
+                                        <td colspan="3">No hay alumnos inscriptos en esta materia.</td>
                                     </tr>
                                 }
                             </tbody>
@@ -140,7 +149,64 @@
 
                     </div>
                 </div>
+
+
+                <!-- Modal para agregar un alumno a la materia -->
+                <div class="modal fade" id="modalAgregarAlumno" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Agregar Alumno</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-start">
+                                @using (Html.BeginForm("AgregarAlumno", "Profesor", FormMethod.Post))
+                                {
+
+                                    <input type="hidden" id="inputMateria" name="Id_Materia">
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Seleccionar Alumno</label>
+                                        <select id="selectAlumnos" name="Id_Alumno" class="form-control">
+                                            <option>Seleccione un alumno...</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Agregar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin del Modal para agregar un alumno -->
             }
+            <!-- Modal para eliminar un alumno de la materia -->
+            <div class="modal fade" id="modalEliminarAlumno" tabindex="-1" aria-labelledby="modalEliminarAlumnoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEliminarAlumnoLabel">Eliminar Alumno</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formEliminarAlumno" action="@Url.Action("EliminarAlumno", "Profesor")" method="post">
+                                <input type="hidden" id="inputMateriaEliminar" name="Id_Materia">
+
+                                <div class="mb-3">
+                                    <label for="selectAlumnosEliminar" class="form-label">Seleccione un Alumno:</label>
+                                    <select class="form-select" id="selectAlumnosEliminar" name="Id_Alumno" required>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn btn-danger">Eliminar Alumno</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
         else
         {
@@ -317,7 +383,7 @@
                 calificacionInput.classList.add("is-invalid");
                 return;
             }
-            
+
             // Si todo es válido, ocultar el error y enviar el formulario
             errorMsg.classList.add("d-none");
             calificacionInput.classList.remove("is-invalid");
@@ -354,6 +420,85 @@
             // Mostrar el modal
             var bootstrapModal = new bootstrap.Modal(modal);
             bootstrapModal.show();
+        }
+
+        function cargarAlumnosDisponibles(idMateria) {
+            // Llamar a la API o acción del controlador que devuelve los alumnos disponibles
+            fetch(`/Profesor/ObtenerAlumnosDisponibles?idMateria=${idMateria}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Obtener el select del modal
+                    let select = document.getElementById("selectAlumnos");
+                    select.innerHTML = ""; // Limpiar opciones previas
+
+                    if (data.length === 0) {
+                        let option = document.createElement("option");
+                        option.text = "No hay alumnos disponibles";
+                        option.disabled = true;
+                        select.appendChild(option);
+                    } else {
+                        let defaultOption = document.createElement("option");
+                        defaultOption.text = "Seleccione un alumno...";
+                        defaultOption.value = "";
+                        select.appendChild(defaultOption);
+
+                        // Llenar el select con los alumnos recibidos
+                        data.forEach(alumno => {
+                            let option = document.createElement("option");
+                            option.value = alumno.Id_Usuario;
+                            option.text = `${alumno.Nombre} ${alumno.Apellido} ${alumno.DNI}`;
+                            select.appendChild(option);
+                        });
+                    }
+
+                    // Asignar el ID de materia al input oculto del modal
+                    document.getElementById("inputMateria").value = idMateria;
+
+                    // Mostrar el modal
+                    var modal = new bootstrap.Modal(document.getElementById("modalAgregarAlumno"));
+                    modal.show();
+                })
+                .catch(error => console.error("Error al obtener alumnos:", error));
+        }
+        function cargarAlumnosMateria(idMateria) {
+            fetch(`/Profesor/ObtenerAlumnosMateria?idMateria=${idMateria}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Datos recibidos:", data); // <-- Verificar en consola
+
+                    let select = document.getElementById("selectAlumnosEliminar");
+                    select.innerHTML = "";
+
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+
+                    if (data.length === 0) {
+                        let option = document.createElement("option");
+                        option.text = "No hay alumnos inscriptos en esta materia";
+                        option.disabled = true;
+                        select.appendChild(option);
+                    } else {
+                        let defaultOption = document.createElement("option");
+                        defaultOption.text = "Seleccione un alumno...";
+                        defaultOption.value = "";
+                        select.appendChild(defaultOption);
+
+                        data.forEach(alumno => {
+                            let option = document.createElement("option");
+                            option.value = alumno.Id_Usuario;
+                            option.text = `${alumno.Nombre} ${alumno.Apellido} ${alumno.DNI}`;
+                            select.appendChild(option);
+                        });
+                    }
+
+                    document.getElementById("inputMateriaEliminar").value = idMateria;
+
+                    var modal = new bootstrap.Modal(document.getElementById("modalEliminarAlumno"));
+                    modal.show();
+                })
+                .catch(error => console.error("Error al obtener alumnos:", error));
         }
 
 

@@ -173,7 +173,7 @@ namespace CapaNegocio
 
             return listaUsuarios;
         }
-
+        
         public Usuario buscarPorID(long idUsuario)
         {
             Usuario usuario = null;
@@ -542,6 +542,47 @@ namespace CapaNegocio
                 datos.cerrarConexion();
             }
             if(profesores.Count == 0)
+            {
+                return null;
+            }
+            return profesores;
+        }
+        public List<Usuario> ObtenerAlumnosActivos()
+        {
+            List<Usuario> profesores = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string consulta = "SELECT Id_Usuario, Nombre, Apellido, Email, Activo, DNI FROM Usuarios WHERE Id_Rol = 2 AND Activo = 1";
+
+
+                datos.settearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Usuario profesor = new Usuario
+                    {
+                        Id_Usuario = Convert.ToInt32(datos.Lector["Id_Usuario"]),
+                        Nombre = datos.Lector["Nombre"].ToString(),
+                        Apellido = datos.Lector["Apellido"].ToString(),
+                        Email = datos.Lector["Email"].ToString(),
+                        Activo = Convert.ToBoolean(datos.Lector["Activo"]),
+                        DNI = datos.Lector["DNI"].ToString()
+                    };
+                    profesores.Add(profesor);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            if (profesores.Count == 0)
             {
                 return null;
             }

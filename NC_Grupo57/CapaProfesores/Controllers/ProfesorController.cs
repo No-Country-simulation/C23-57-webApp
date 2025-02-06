@@ -61,12 +61,23 @@ namespace CapaProfesores.Controllers
                 alumnosPorMateria[idMateria] = alumnosMateria;
             }
 
+            // Obtener todos los alumnos activos
+            var todosLosAlumnos = usuarioNegocio.ObtenerAlumnosActivos();
 
-            
+            // Filtrar los que NO están en la materia
+            var alumnosDisponibles = todosLosAlumnos.Where(a =>
+                !alumnosPorMateria.Values.SelectMany(al => al).Any(alumno => alumno.Id_Usuario == a.Id_Usuario))
+                .ToList();
+
+            ViewBag.AlumnosDisponibles = alumnosDisponibles; // Guardamos la lista filtrada
+
+
             ViewBag.MateriasProfesor = materiaNegocio.obtenerDatosDeMateriasxProfesor(idProfesor);
             ViewBag.AlumnosPorMateria = alumnosPorMateria;  // Diccionario con alumnos filtrados por materia
             ViewBag.TiposNota = tipoNotaNegocio.obtenerTodosLosTiposNotaActivos();
             ViewBag.CodigoComision = codigosPorMateria;  // Diccionario con códigos de comisión por materia
+
+            
             return View(materias);
         }
 
@@ -256,6 +267,168 @@ namespace CapaProfesores.Controllers
                 return RedirectToAction("PrincipalProfesor");
             }
         }
+        [HttpPost]
+        public ActionResult AgregarAlumno(int Id_Materia, int Id_Alumno)
+        {
+            try
+            {
+                var usuario = Session["Usuario"] as Usuario;
+                if (usuario == null) return RedirectToAction("Login", "Home");
+
+                int idProfesor = (int)usuario.Id_Usuario;
+                var materiaProfesor = materiaNegocio.obtenerDatosDeMateriasxProfesor(idProfesor)
+                                         .SingleOrDefault(mp => mp.Id_Materia == Id_Materia);
+
+                if (materiaProfesor == null)
+                {
+                    TempData["Error"] = "No se encontró la materia o no está asignada al profesor.";
+                    return RedirectToAction("PrincipalProfesor");
+                }
+
+                // Agregar alumno a la materia
+                bool resultado = materiaNegocio.AgregarAlumnoAMateria(Id_Alumno, materiaProfesor.Codigo_Comision);
+
+                if (resultado)
+                {
+                    TempData["Mensaje"] = "Alumno agregado exitosamente.";
+                }
+                else
+                {
+                    TempData["Error"] = "No se pudo agregar el alumno. Verifique los datos.";
+                }
+
+                // Obtener todos los alumnos activos
+                List<Usuario> alumnosActivos = usuarioNegocio.ObtenerAlumnosActivos();
+
+                // Obtener alumnos ya inscritos en la materia
+                List<Usuario> alumnosEnMateria = materiaNegocio.ObtenerAlumnosPorMateria(Id_Materia, materiaProfesor.Codigo_Comision);
+
+                // Filtrar los alumnos que NO están en la materia
+                List<Usuario> alumnosDisponibles = alumnosActivos
+                    .Where(a => !alumnosEnMateria.Any(am => am.Id_Usuario == a.Id_Usuario))
+                    .ToList();
+
+                // Guardar en el ViewBag
+                ViewBag.AlumnosDisponibles = alumnosDisponibles;
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al agregar el alumno: " + ex.Message;
+            }
+
+            return RedirectToAction("PrincipalProfesor");
+        }
+        [HttpGet]
+        public JsonResult ObtenerAlumnosDisponibles(int idMateria)
+        {
+            try
+            {
+                // Obtener todos los alumnos activos
+                List<Usuario> todosLosAlumnos = usuarioNegocio.ObtenerAlumnosActivos();
+
+                // Obtener la materia del profesor para asegurar que tiene acceso
+                var usuario = Session["Usuario"] as Usuario;
+                if (usuario == null) return Json(new { error = "Usuario no autenticado" }, JsonRequestBehavior.AllowGet);
+
+                int idProfesor = (int)usuario.Id_Usuario;
+                var materiaProfesor = materiaNegocio.obtenerDatosDeMateriasxProfesor(idProfesor)
+                                                     .SingleOrDefault(mp => mp.Id_Materia == idMateria);
+
+                if (materiaProfesor == null)
+                {
+                    return Json(new { error = "No se encontró la materia o no está asignada al profesor." }, JsonRequestBehavior.AllowGet);
+                }
+
+                // Obtener alumnos ya inscritos en la materia y comisión
+                List<Usuario> alumnosEnMateria = materiaNegocio.ObtenerAlumnosPorMateria(idMateria, materiaProfesor.Codigo_Comision);
+
+                // Filtrar los alumnos que NO están inscritos en la materia
+                List<Usuario> alumnosDisponibles = todosLosAlumnos
+                    .Where(a => !alumnosEnMateria.Any(am => am.Id_Usuario == a.Id_Usuario))
+                    .ToList();
+
+                // Retornar la lista en formato JSON
+                var resultado = alumnosDisponibles.Select(a => new
+                {
+                    a.Id_Usuario,
+                    a.Nombre,
+                    a.Apellido,
+                    a.DNI
+                }).ToList();
+
+                return Json(resultado, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = "Error al obtener alumnos: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public ActionResult EliminarAlumno(int Id_Materia, int Id_Alumno)
+        {
+            try
+            {
+                var usuario = Session["Usuario"] as Usuario;
+                if (usuario == null) return RedirectToAction("Login", "Home");
+
+                int idProfesor = (int)usuario.Id_Usuario;
+                var materiaProfesor = materiaNegocio.obtenerDatosDeMateriasxProfesor(idProfesor)
+                                                     .SingleOrDefault(mp => mp.Id_Materia == Id_Materia);
+
+                if (materiaProfesor == null)
+                {
+                    TempData["Error"] = "No se encontró la materia o no está asignada al profesor.";
+                    return RedirectToAction("PrincipalProfesor");
+                }
+
+                // Eliminar el alumno de la materia
+                bool resultado = materiaNegocio.EliminarAlumnoDeMateria(Id_Alumno, materiaProfesor.Codigo_Comision);
+
+                if (resultado)
+                {
+                    TempData["Mensaje"] = "Alumno eliminado exitosamente.";
+                }
+                else
+                {
+                    TempData["Error"] = "No se pudo eliminar el alumno. Verifique los datos.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Error al eliminar el alumno: " + ex.Message;
+            }
+
+            return RedirectToAction("PrincipalProfesor");
+        }
+        [HttpGet]
+        public JsonResult ObtenerAlumnosMateria(int idMateria)
+        {
+            try
+            {
+                Usuario usuario = Session["Usuario"] as Usuario;
+                if (usuario == null) return Json(new { error = "Usuario no autenticado" }, JsonRequestBehavior.AllowGet);
+
+                int idProfesor = (int)usuario.Id_Usuario;
+                var materiaProfesor = materiaNegocio.obtenerDatosDeMateriasxProfesor(idProfesor).SingleOrDefault(mp => mp.Id_Materia == idMateria);
+
+                if (materiaProfesor == null)
+                {
+                    return Json(new { error = "No se encontró la materia o no está asignada al profesor." }, JsonRequestBehavior.AllowGet);
+                }
+
+                List<Usuario> alumnosEnMateria = materiaNegocio.ObtenerAlumnosPorMateria(idMateria, materiaProfesor.Codigo_Comision);
+
+                var resultado = alumnosEnMateria.Select(a => new { a.Id_Usuario, a.Nombre, a.Apellido, a.DNI }).ToList();
+                return Json(resultado, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = "Error al obtener alumnos: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
 
     }
 }

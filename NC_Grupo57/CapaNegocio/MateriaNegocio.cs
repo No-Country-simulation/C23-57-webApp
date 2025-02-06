@@ -60,6 +60,43 @@ namespace CapaNegocio
             }
         }
 
+        public bool EliminarAlumnoDeMateria(int idAlumno, long codigoComision)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.settearConsulta("Delete from Notas where Id_Usuario_Alumno = @IdAlumno AND Codigo_Comision = @CodigoComision");
+                datos.setearParametro("@IdAlumno", idAlumno);
+                datos.setearParametro("@CodigoComision", codigoComision);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            try
+            {
+                datos.settearConsulta("Delete from Materias_x_Alumno where Id_Usuario_Alumno = @IdAlumno AND Codigo_Comision = @CodigoComision");
+                datos.setearParametro("@IdAlumno", idAlumno);
+                datos.setearParametro("@CodigoComision", codigoComision);
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return true;
+
+        }
         public void bajaFisicaMateria(int idMateria)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -162,6 +199,22 @@ namespace CapaNegocio
             return materia;
         }
         //PRUEBA
+        public bool AgregarAlumnoAMateria(int idAlumno, long codigoComision)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.settearConsulta("INSERT INTO Materias_x_Alumno(Id_Usuario_Alumno, Codigo_Comision, Activo) VALUES(@IdAlumno, @CodigoComision, 1)");
+                datos.setearParametro("@IdAlumno", idAlumno);
+                datos.setearParametro("@CodigoComision", codigoComision);
+                datos.ejecutarLectura();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
         public List<MateriaProfesor> obtenerDatosDeMateriasxProfesor(int idProfesor)
         {
             List<MateriaProfesor> listaUsuarios = new List<MateriaProfesor>();
